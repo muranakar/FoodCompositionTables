@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 protocol FoodRegistrationDelegate: AnyObject {
     func transitPresentingVC()
@@ -25,7 +24,7 @@ final class FoodRegistrationViewController: UIViewController {
     var selectingFood: FoodComposition?
     var selectedFood: SelectFood = .init()
     let defaultFoodWeight = 100.0
-    private var realmRepository = RealmRepository()
+    private var realmRepository = FoodTabelRepositoryImpr()
     
     override func viewDidLoad() {
         super.viewDidLoad()

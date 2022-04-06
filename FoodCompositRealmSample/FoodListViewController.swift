@@ -6,11 +6,9 @@
 //
 
 import UIKit
-import RealmSwift
-
 
 protocol FoodListViewTransitonDelegate: AnyObject {
-    func transitPresentingVC(_: ()->Void)
+    func transitPresentingVC(_: () -> Void)
 }
 
 class FoodListViewController: UIViewController,FoodRegistrationDelegate {
@@ -18,9 +16,9 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
     weak var delegate: FoodListViewTransitonDelegate?
     private let defaultCategory: [String] = FoodComposition.defaultCategory
 
-    private var realmRepository = RealmRepository()
-    private var foodList: Results<FoodComposition>?
-    private var searchedFoodList: Results<FoodComposition>?
+    private var realmRepository = FoodTabelRepositoryImpr()
+    private var foodList: [FoodComposition] = []
+    private var searchedFoodList: [FoodComposition] = []
     private var searchController = UISearchController()
     
     @IBOutlet private weak var tableView: UITableView!
@@ -97,15 +95,16 @@ extension FoodListViewController: UITableViewDelegate {
         
         for case defaultCategory[indexPath.section] in defaultCategory {
             
-            let searchedFoodList: Results<FoodComposition>?
+            let searchedFoodList: [FoodComposition]
             if searchController.isActive {
                 searchedFoodList = self.searchedFoodList
             } else {
                 searchedFoodList = self.foodList
             }
+            let selectingFoods = searchedFoodList.filter { $0.category == self.defaultCategory[indexPath.section] }
             
-            let selectingFoods = searchedFoodList?.where { $0.category == self.defaultCategory[indexPath.section] }
-            foodRegistrationViewController.selectingFood = selectingFoods?[indexPath.row]
+//            let selectingFoods = searchedFoodList?.where { $0.category == self.defaultCategory[indexPath.section] }
+            foodRegistrationViewController.selectingFood = selectingFoods[indexPath.row]
             break
         }
         
@@ -148,15 +147,15 @@ extension FoodListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         for case defaultCategory[section] in defaultCategory {
-            let searchedFoodList: Results<FoodComposition>?
+            let searchedFoodList: [FoodComposition]
             if searchController.isActive {
                 searchedFoodList = self.searchedFoodList
             } else {
                 searchedFoodList = self.foodList
             }
             
-            let searchedFoodsCount = searchedFoodList?.where { $0.category == defaultCategory[section] }.count
-            return searchedFoodsCount ?? 0
+            let searchedFoodsCount = searchedFoodList.filter { $0.category == defaultCategory[section] }.count
+            return searchedFoodsCount
         }
         
         return 0
@@ -167,16 +166,15 @@ extension FoodListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { fatalError() }
         
         for case defaultCategory[indexPath.section] in defaultCategory {
-            
-            let searchedFoodList: Results<FoodComposition>?
+            let searchedFoodList: [FoodComposition]
             if searchController.isActive {
                 searchedFoodList = self.searchedFoodList
             } else {
                 searchedFoodList = self.foodList
             }
             
-            let filterdFoods = searchedFoodList?.where { $0.category == self.defaultCategory[indexPath.section] }
-            let foodName = filterdFoods?[indexPath.row].food_name
+            let filterdFoods = searchedFoodList.filter { $0.category == self.defaultCategory[indexPath.section] }
+            let foodName = filterdFoods[indexPath.row].food_name
             cell.textLabel?.text = foodName
             cell.textLabel?.numberOfLines = 2
             break
@@ -190,10 +188,16 @@ extension FoodListViewController: UISearchBarDelegate {
 }
 
 extension FoodListViewController: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
         print("searching")
-        searchedFoodList = foodList?.where {
-            $0.food_name.contains(searchController.searchBar.text?.lowercased())
+        searchedFoodList = foodList.filter {
+            guard let foodName = $0.food_name,
+                  let searchBarText = searchController.searchBar.text else {
+                      return false
+                  }
+            let searchedFood = foodName.contains( searchBarText.lowercased())
+            return searchedFood
         }
         tableView.reloadData()
     }

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             migrationBlock: { migration, oldSchemaVersion in})
         Realm.Configuration.defaultConfiguration = config
         
-        let realm = RealmRepository()
+        let realm = FoodTabelRepositoryImpr()
         realm.initializeRealm()
         return true
     }

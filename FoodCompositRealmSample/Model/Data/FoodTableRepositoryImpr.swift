@@ -11,11 +11,12 @@ import RealmSwift
 protocol FoodTableRepository {
     func initializeRealm()
     func save(selectFood: SelectFood)
-    func loadSelectFoods() -> Results<SelectFood>
-    func loadFoodTable() -> Results<FoodComposition>
+    func loadSelectFoods() -> [SelectFood]
+    func loadFoodTable() -> [FoodComposition]
 }
 
-class RealmRepository: FoodTableRepository {
+final class FoodTabelRepositoryImpr: FoodTableRepository {
+        
     private var realm: Realm
     
     init() {
@@ -63,22 +64,24 @@ class RealmRepository: FoodTableRepository {
         }
     }
     
-    func loadSelectFoods() -> Results<SelectFood> {
-        let selectFoods
+    func loadSelectFoods() -> [SelectFood] {
+        let selectFoodsResults
         = realm
             .objects(SelectFood.self)
             .sorted(byKeyPath: "objectId",
                     ascending: true)
         
+        let selectFoods = Array(selectFoodsResults)
         return selectFoods
     }
     
-    func loadFoodTable() -> Results<FoodComposition> {
-        let allFoods
+    func loadFoodTable() -> [FoodComposition] {
+        let allFoodsResults
         = realm
             .objects(FoodComposition.self)
             .sorted(byKeyPath: "id",
                     ascending: true)
+        let allFoods = Array(allFoodsResults)
         return allFoods
     }
     
@@ -91,29 +94,4 @@ class RealmRepository: FoodTableRepository {
             print("error")
         }
     }
-    
-    //    // PK検索
-    //    func find(primaryKey: String) -> DomainType? {
-    //      return realm.objects(DomainType.self).filter("id == %@", primaryKey).first
-    //    }
-    //    // 全部取ってくる
-    //    func findAll() -> {
-    //      return realm.objects(DomainType.self).map({$0})
-    //    }
-    //    // 条件指定
-    //    func find(predicate: NSPredicate) -> Results<DomainType> {
-    //      return realm.objects(DomainType.self).filter(predicate)
-    //    }
-    //    // データ追加と更新
-    //    func add(domains: [DomainType]) {
-    //      try! realm.write {
-    //        realm.add(domains, update: true)
-    //      }
-    //    }
-    //    // データ削除
-    //    func delete(domains: [DomainType]) {
-    //      try! realm.write {
-    //        realm.delete(domains)
-    //      }
-    //    }
 }

@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import RealmSwift
 
 final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     
@@ -15,15 +14,15 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var registFoodButton: UIButton!
     
-    var realmRepository = RealmRepository()
-    var selectFoods: Results<SelectFood>? {
+    var realmRepository = FoodTabelRepositoryImpr()
+    var selectFoods: [SelectFood] {
         realmRepository.loadSelectFoods()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-    
+        
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self))
         tableView.delegate = self
@@ -40,12 +39,10 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     }
     
     private func displayEnergy() {
-        guard let totalEnergy:Int
-                = selectFoods?
-                .map({ $0.foodObject?.energy ?? 0 })
-                .reduce(0,+) else {
-            return
-        }
+        let totalEnergy:Int
+        = selectFoods
+            .map({ $0.foodObject?.energy ?? 0 })
+            .reduce(0,+)
         
         energyLabel.text = String(totalEnergy) + "kcal"
     }
@@ -69,22 +66,20 @@ extension MainViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if selectFoods?[indexPath.row] != nil {
-            realmRepository.delete(selectFood: selectFoods![indexPath.row])
-            displayEnergy()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
+        realmRepository.delete(selectFood: selectFoods[indexPath.row])
+        displayEnergy()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectFoods?.count ?? 0
+        return selectFoods.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(UITableViewCell.self), for: indexPath)
-        let foodName:[String]? = selectFoods?.map { $0.foodObject?.food_name ?? "" }
+        let foodName:[String]? = selectFoods.map { $0.foodObject?.food_name ?? "" }
         cell.textLabel?.text = foodName?[indexPath.row]
         return cell
     }
