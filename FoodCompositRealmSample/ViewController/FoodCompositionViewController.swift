@@ -35,15 +35,15 @@ class FoodCompositionViewController: UIViewController, UITableViewDelegate, UITa
 
         var value: String
         switch nutrient {
-        case .foodCode: value = String(selectFood.food_code ?? 0)
-        case .foodName: value = selectFood.food_name ?? ""
-        case .energy: value = String(selectFood.energy ?? 0) + " g"
-        case .water: value = String(selectFood.water ?? 0) + " g"
-        case .protein: value = String(selectFood.protein ?? 0) + " g"
-        case .fat: value = String(selectFood.fat ?? 0) + " g"
-        case .dietaryfiber: value = String(selectFood.dietaryfiber ?? 0) + " g"
-        case .carbohydrate: value = String(selectFood.carbohydrate ?? 0) + " g"
-        case .category: value = selectFood.category ?? ""
+        case .foodCode: value = String(selectFood.foodCode )
+        case .foodName: value = selectFood.foodName
+        case .energy: value = String(selectFood.energy) + " g"
+        case .water: value = String(selectFood.water) + " g"
+        case .protein: value = String(selectFood.protein) + " g"
+        case .fat: value = String(selectFood.fat) + " g"
+        case .dietaryfiber: value = String(selectFood.dietaryfiber) + " g"
+        case .carbohydrate: value = String(selectFood.carbohydrate) + " g"
+        case .category: value = selectFood.category
         case .weight: value = "100gあたり"
         }
 
