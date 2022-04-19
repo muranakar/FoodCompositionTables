@@ -53,6 +53,7 @@ enum Composition {
 }
 
 enum CategoryType:Int, CaseIterable {
+    
     case koku = 0
     case imo
     case satou
@@ -94,13 +95,10 @@ enum CategoryType:Int, CaseIterable {
         case .tyourizumi: return "18　調理済み流通食品類"
         }
     }
-    
-//    func CompositionString(at composition: Composition) -> String {
-//        composition.nameString
-//    }
 }
 
 enum KetogenicIndexType: Int, CaseIterable {
+    
     case ketogenicRatio
     case ketogenicIndex
     case ketogenicValue
@@ -114,35 +112,8 @@ enum KetogenicIndexType: Int, CaseIterable {
     }
 }
 
-//enum Composition:Int,CaseIterable {
-////    case id
-//    case foodCode = 0
-//    case foodName
-//    case energy
-//    case water
-//    case protein
-//    case fat
-//    case dietaryfiber
-//    case carbohydrate
-//    case category
-//
-//    var nutrientString: String {
-//        switch self {
-////        case .id: return "id"
-//        case .foodCode: return "食品コード"
-//        case .foodName: return "食品名"
-//        case .energy: return "エネルギー量"
-//        case .water: return "水分量"
-//        case .protein: return "たんぱく質量"
-//        case .fat: return "脂質量"
-//        case .dietaryfiber: return "食物繊維量"
-//        case .carbohydrate: return "炭水化物量"
-//        case .category: return "カテゴリ"
-//        }
-//    }
-//}
-
 struct Nutrients: Equatable {
+    
     var id: Int?
     var foodCode: Int
     var foodName: String
@@ -168,35 +139,3 @@ struct Nutrients: Equatable {
 //        sugar = food.sugar ?? 0
     }
 }
-
-//struct FoodComposition: Equatable {
-//
-//    var id: Int?
-//    var food_code: Int
-//    var food_name: String
-//    var energy: Int
-//    var water: Double
-//    var protein: Double
-//    var fat: Double
-//    var dietaryfiber: Double
-//    var carbohydrate: Double
-//    var sugar: Double
-//    var category: String
-//
-//    var weight:Double = 100.0
-//
-//    init(food: FoodCompositionRealm) {
-//        //これがOKなのかどうか
-//        self.id = food.id
-//        self.food_code = food.food_code ?? 0
-//        self.food_name = food.food_name ?? ""
-//        self.energy = food.energy ?? 0
-//        self.water = food.water ?? 0
-//        self.protein = food.protein ?? 0
-//        self.fat = food.fat ?? 0
-//        self.carbohydrate = food.carbohydrate ?? 0
-//        self.dietaryfiber = food.dietaryfiber ?? 0
-//        self.sugar = food.sugar ?? 0
-//        self.category = food.category ?? ""
-//    }
-//}
