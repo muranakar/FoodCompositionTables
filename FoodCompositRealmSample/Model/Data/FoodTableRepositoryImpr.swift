@@ -12,10 +12,10 @@ protocol FoodTableRepository {
     func initializeRealm()
     func save(selectFood: SelectFood)
     func loadSelectFoods() -> [SelectFood]
-    func loadFoodTable() -> [FoodComposition]
+    func loadFoodTable() -> [FoodCompositionObject]
 }
 
-final class FoodTabelRepositoryImpr: FoodTableRepository {
+final class FoodTabelRepositoryImpr: FoodTableRepository {    
         
     private var realm: Realm
     
@@ -70,18 +70,19 @@ final class FoodTabelRepositoryImpr: FoodTableRepository {
             .objects(SelectFood.self)
             .sorted(byKeyPath: "objectId",
                     ascending: true)
-        
         let selectFoods = Array(selectFoodsResults)
         return selectFoods
     }
     
-    func loadFoodTable() -> [FoodComposition] {
+    func loadFoodTable() -> [FoodCompositionObject] {
         let allFoodsResults
         = realm
             .objects(FoodComposition.self)
             .sorted(byKeyPath: "id",
                     ascending: true)
-        let allFoods = Array(allFoodsResults)
+        let allFoods = Array(allFoodsResults).map {
+            FoodCompositionObject(food: $0)
+        }
 //        let allFood = allFoods.map { Nutrients(food: $0) }
         return allFoods
     }
