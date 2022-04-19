@@ -9,7 +9,7 @@ import UIKit
 
 class FoodCompositionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var selectFood:FoodComposition?
+    var selectFood:FoodCompositionObject?
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
