@@ -14,9 +14,9 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var registFoodButton: UIButton!
     
-    var realmRepository = FoodTabelRepositoryImpr()
+    var repository = FoodTabelRepositoryImpr()
     var selectFoods: [SelectFood] {
-        realmRepository.loadSelectFoods()
+        repository.loadSelectFoods()
     }
     
     override func viewDidLoad() {
@@ -66,7 +66,7 @@ extension MainViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        realmRepository.delete(selectFood: selectFoods[indexPath.row])
+        repository.delete(selectFood: selectFoods[indexPath.row])
         displayEnergy()
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
