@@ -16,10 +16,12 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
     weak var delegate: FoodListViewTransitonDelegate?
     
     private var realmRepository = FoodTabelRepositoryImpr()
+    
     private var foodList: [FoodCompositionObject] = []
-    private var searchedFoodList: [FoodCompositionObject] = []
-    private var searchController = UISearchController()
     private var selectingFood: FoodCompositionObject?
+    private var searchedFoodList: [FoodCompositionObject] = []
+    
+    private var searchController = UISearchController()
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var coverView: UIView!
