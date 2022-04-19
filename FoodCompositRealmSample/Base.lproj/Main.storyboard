@@ -13,7 +13,7 @@
         <!--Main View Controller-->
         <scene sceneID="u6c-eO-ns9">
             <objects>
-                <viewController storyboardIdentifier="SelectedFoodViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6rX-m5-ani" customClass="MainViewController" customModule="FoodCompositRealmSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectedFoodViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6rX-m5-ani" customClass="MainViewController" customModule="FoodCompositionTables" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cVj-ao-zUi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
         <!--検索-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="FoodListViewController" id="BYZ-38-t0r" customClass="FoodListViewController" customModule="FoodCompositRealmSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FoodListViewController" id="BYZ-38-t0r" customClass="FoodListViewController" customModule="FoodCompositionTables" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,6 +132,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="g3d-e1-3JR" kind="show" identifier="toFoodCompositionVC" id="Mzu-KX-nWw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -168,10 +171,51 @@
             </objects>
             <point key="canvasLocation" x="-584" y="3"/>
         </scene>
+        <!--Food Composition View Controller-->
+        <scene sceneID="iUU-OX-Nzs">
+            <objects>
+                <viewController id="g3d-e1-3JR" customClass="FoodCompositionViewController" customModule="FoodCompositionTables" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kLv-Ye-OIi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FAo-zx-DB4">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompositionCell" id="gXr-Cq-iR0">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gXr-Cq-iR0" id="cNu-iK-bO0">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iWl-l3-Wzq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iWl-l3-Wzq" firstAttribute="trailing" secondItem="FAo-zx-DB4" secondAttribute="trailing" id="0US-Su-2JT"/>
+                            <constraint firstItem="iWl-l3-Wzq" firstAttribute="bottom" secondItem="FAo-zx-DB4" secondAttribute="bottom" id="5Nu-fg-X1o"/>
+                            <constraint firstItem="FAo-zx-DB4" firstAttribute="top" secondItem="iWl-l3-Wzq" secondAttribute="top" id="Vkc-Y9-6yj"/>
+                            <constraint firstItem="FAo-zx-DB4" firstAttribute="leading" secondItem="iWl-l3-Wzq" secondAttribute="leading" id="v87-ag-Zbq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="NqA-zT-GwD"/>
+                    <connections>
+                        <outlet property="tableView" destination="FAo-zx-DB4" id="PrZ-dI-E0r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nUh-wi-c0q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="331.8840579710145" y="2.6785714285714284"/>
+        </scene>
         <!--Food Registration View Controller-->
         <scene sceneID="g0t-9K-VmA">
             <objects>
-                <viewController storyboardIdentifier="popover" id="71d-Tn-144" customClass="FoodRegistrationViewController" customModule="FoodCompositRealmSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popover" id="71d-Tn-144" customClass="FoodRegistrationViewController" customModule="FoodCompositionTables" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pYr-c5-gpq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -274,7 +318,7 @@
     </scenes>
     <resources>
         <namedColor name="HideViewColor">
-            <color white="0.34939950704574585" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.34900000691413879" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

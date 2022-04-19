@@ -82,6 +82,7 @@ final class FoodTabelRepositoryImpr: FoodTableRepository {
             .sorted(byKeyPath: "id",
                     ascending: true)
         let allFoods = Array(allFoodsResults)
+//        let allFood = allFoods.map { Nutrients(food: $0) }
         return allFoods
     }
     

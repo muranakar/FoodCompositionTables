@@ -14,7 +14,11 @@
 		18B1FE6E27CC9E61001124FF /* FoodTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1FE6C27CC9E61001124FF /* FoodTableModel.swift */; };
 		18B389F627C91687009AAB65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B389F527C91687009AAB65 /* MainViewController.swift */; };
 		18B389F827C91BA2009AAB65 /* FoodRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B389F727C91BA2009AAB65 /* FoodRegistrationViewController.swift */; };
+		18B60481280CEBD900DA4A79 /* FoodCompositionTablesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60480280CEBD900DA4A79 /* FoodCompositionTablesTests.swift */; };
+		18B60488280CECC400DA4A79 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60487280CECC400DA4A79 /* Test.swift */; };
 		18C04A1327FDE88800164DD8 /* FoodTableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1227FDE88800164DD8 /* FoodTableUseCase.swift */; };
+		18C04A1D2801C5ED00164DD8 /* FoodCompositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1C2801C5ED00164DD8 /* FoodCompositionViewController.swift */; };
+		18C04A1F2801C76B00164DD8 /* FoodComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1E2801C76B00164DD8 /* FoodComposition.swift */; };
 		43B4B324FC5857D4743EE0A7 /* Pods_FoodCompositionTables.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F35C5B9858914206C923B301 /* Pods_FoodCompositionTables.framework */; };
 		8A5D0679279F4876002D2276 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D0678279F4876002D2276 /* AppDelegate.swift */; };
 		8A5D067B279F4876002D2276 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D067A279F4876002D2276 /* SceneDelegate.swift */; };
@@ -23,6 +27,16 @@
 		8A5D0682279F4881002D2276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5D0681279F4881002D2276 /* Assets.xcassets */; };
 		8A5D0685279F4881002D2276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5D0683279F4881002D2276 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18B60482280CEBD900DA4A79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A5D066D279F4876002D2276 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A5D0674279F4876002D2276;
+			remoteInfo = FoodCompositionTables;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		024238A1577524AC5AFA1B4D /* Pods-FoodCompositionTables.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCompositionTables.release.xcconfig"; path = "Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables.release.xcconfig"; sourceTree = "<group>"; };
@@ -33,7 +47,13 @@
 		18B1FE6C27CC9E61001124FF /* FoodTableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableModel.swift; sourceTree = "<group>"; };
 		18B389F527C91687009AAB65 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		18B389F727C91BA2009AAB65 /* FoodRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRegistrationViewController.swift; sourceTree = "<group>"; };
+		18B60476280CEB7500DA4A79 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		18B6047E280CEBD900DA4A79 /* FoodCompositionTablesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodCompositionTablesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18B60480280CEBD900DA4A79 /* FoodCompositionTablesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCompositionTablesTests.swift; sourceTree = "<group>"; };
+		18B60487280CECC400DA4A79 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		18C04A1227FDE88800164DD8 /* FoodTableUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableUseCase.swift; sourceTree = "<group>"; };
+		18C04A1C2801C5ED00164DD8 /* FoodCompositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCompositionViewController.swift; sourceTree = "<group>"; };
+		18C04A1E2801C76B00164DD8 /* FoodComposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodComposition.swift; sourceTree = "<group>"; };
 		8A5D0675279F4876002D2276 /* FoodCompositionTables.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodCompositionTables.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5D0678279F4876002D2276 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5D067A279F4876002D2276 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +67,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		18B6047B280CEBD900DA4A79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A5D0672279F4876002D2276 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,6 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				18B389F527C91687009AAB65 /* MainViewController.swift */,
+				18C04A1C2801C5ED00164DD8 /* FoodCompositionViewController.swift */,
+				8A5D067C279F4876002D2276 /* FoodListViewController.swift */,
+				18B389F727C91BA2009AAB65 /* FoodRegistrationViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -94,10 +124,19 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		18B6047F280CEBD900DA4A79 /* FoodCompositionTablesTests */ = {
+			isa = PBXGroup;
+			children = (
+				18B60480280CEBD900DA4A79 /* FoodCompositionTablesTests.swift */,
+			);
+			path = FoodCompositionTablesTests;
+			sourceTree = "<group>";
+		};
 		18C04A1127FDE85C00164DD8 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				18C04A1227FDE88800164DD8 /* FoodTableUseCase.swift */,
+				18C04A1E2801C76B00164DD8 /* FoodComposition.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -105,6 +144,7 @@
 		5ED5D8C73B5BD99A5CB4FD69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18B60476280CEB7500DA4A79 /* XCTest.framework */,
 				F35C5B9858914206C923B301 /* Pods_FoodCompositionTables.framework */,
 			);
 			name = Frameworks;
@@ -114,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				8A5D0677279F4876002D2276 /* FoodCompositRealmSample */,
+				18B6047F280CEBD900DA4A79 /* FoodCompositionTablesTests */,
 				8A5D0676279F4876002D2276 /* Products */,
 				B97A1FE91F25B963566031E3 /* Pods */,
 				5ED5D8C73B5BD99A5CB4FD69 /* Frameworks */,
@@ -124,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				8A5D0675279F4876002D2276 /* FoodCompositionTables.app */,
+				18B6047E280CEBD900DA4A79 /* FoodCompositionTablesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,12 +178,11 @@
 				184788DF27DB4D2E00E406F0 /* Model */,
 				8A5D0678279F4876002D2276 /* AppDelegate.swift */,
 				8A5D067A279F4876002D2276 /* SceneDelegate.swift */,
-				8A5D067C279F4876002D2276 /* FoodListViewController.swift */,
-				18B389F727C91BA2009AAB65 /* FoodRegistrationViewController.swift */,
 				8A5D067E279F4876002D2276 /* Main.storyboard */,
 				8A5D0681279F4881002D2276 /* Assets.xcassets */,
 				8A5D0683279F4881002D2276 /* LaunchScreen.storyboard */,
 				8A5D0686279F4881002D2276 /* Info.plist */,
+				18B60487280CECC400DA4A79 /* Test.swift */,
 			);
 			path = FoodCompositRealmSample;
 			sourceTree = "<group>";
@@ -158,6 +199,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		18B6047D280CEBD900DA4A79 /* FoodCompositionTablesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18B60486280CEBD900DA4A79 /* Build configuration list for PBXNativeTarget "FoodCompositionTablesTests" */;
+			buildPhases = (
+				18B6047A280CEBD900DA4A79 /* Sources */,
+				18B6047B280CEBD900DA4A79 /* Frameworks */,
+				18B6047C280CEBD900DA4A79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18B60483280CEBD900DA4A79 /* PBXTargetDependency */,
+			);
+			name = FoodCompositionTablesTests;
+			productName = FoodCompositionTablesTests;
+			productReference = 18B6047E280CEBD900DA4A79 /* FoodCompositionTablesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8A5D0674279F4876002D2276 /* FoodCompositionTables */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A5D0689279F4881002D2276 /* Build configuration list for PBXNativeTarget "FoodCompositionTables" */;
@@ -183,9 +242,13 @@
 		8A5D066D279F4876002D2276 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					18B6047D280CEBD900DA4A79 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 8A5D0674279F4876002D2276;
+					};
 					8A5D0674279F4876002D2276 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -205,11 +268,19 @@
 			projectRoot = "";
 			targets = (
 				8A5D0674279F4876002D2276 /* FoodCompositionTables */,
+				18B6047D280CEBD900DA4A79 /* FoodCompositionTablesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		18B6047C280CEBD900DA4A79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A5D0673279F4876002D2276 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -267,6 +338,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		18B6047A280CEBD900DA4A79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18B60481280CEBD900DA4A79 /* FoodCompositionTablesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A5D0671279F4876002D2276 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -274,6 +353,9 @@
 				8A5D067D279F4876002D2276 /* FoodListViewController.swift in Sources */,
 				18C04A1327FDE88800164DD8 /* FoodTableUseCase.swift in Sources */,
 				18B389F627C91687009AAB65 /* MainViewController.swift in Sources */,
+				18C04A1D2801C5ED00164DD8 /* FoodCompositionViewController.swift in Sources */,
+				18C04A1F2801C76B00164DD8 /* FoodComposition.swift in Sources */,
+				18B60488280CECC400DA4A79 /* Test.swift in Sources */,
 				184788E227DB4DC500E406F0 /* CustomTableViewCell.swift in Sources */,
 				18B389F827C91BA2009AAB65 /* FoodRegistrationViewController.swift in Sources */,
 				8A5D0679279F4876002D2276 /* AppDelegate.swift in Sources */,
@@ -284,6 +366,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18B60483280CEBD900DA4A79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A5D0674279F4876002D2276 /* FoodCompositionTables */;
+			targetProxy = 18B60482280CEBD900DA4A79 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8A5D067E279F4876002D2276 /* Main.storyboard */ = {
@@ -305,6 +395,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		18B60484280CEBD900DA4A79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = toaster.FoodCompositionTablesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodCompositionTables.app/FoodCompositionTables";
+			};
+			name = Debug;
+		};
+		18B60485280CEBD900DA4A79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = toaster.FoodCompositionTablesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodCompositionTables.app/FoodCompositionTables";
+			};
+			name = Release;
+		};
 		8A5D0687279F4881002D2276 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -462,6 +590,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		18B60486280CEBD900DA4A79 /* Build configuration list for PBXNativeTarget "FoodCompositionTablesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18B60484280CEBD900DA4A79 /* Debug */,
+				18B60485280CEBD900DA4A79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8A5D0670279F4876002D2276 /* Build configuration list for PBXProject "FoodCompositionTables" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
