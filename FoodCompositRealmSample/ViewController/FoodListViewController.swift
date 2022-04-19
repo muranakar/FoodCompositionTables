@@ -14,8 +14,12 @@ protocol FoodListViewTransitonDelegate: AnyObject {
 class FoodListViewController: UIViewController,FoodRegistrationDelegate {
     
     weak var delegate: FoodListViewTransitonDelegate?
-    private let defaultCategory: [String] = FoodComposition.defaultCategory
+    
+//    private let defaultCategory: [String] = FoodComposition.defaultCategory
 
+    private let defaultCategory: [String] =  CategoryType.allCases.map { $0.name }
+
+    
     private var realmRepository = FoodTabelRepositoryImpr()
     private var foodList: [FoodCompositionObject] = []
     private var searchedFoodList: [FoodCompositionObject] = []

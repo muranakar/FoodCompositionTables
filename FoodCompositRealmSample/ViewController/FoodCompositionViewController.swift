@@ -9,7 +9,8 @@ import UIKit
 
 class FoodCompositionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var selectFood:FoodCompositionObject?
+    var selectFood: FoodCompositionObject?
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -29,27 +30,27 @@ class FoodCompositionViewController: UIViewController, UITableViewDelegate, UITa
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CompositionCell") else { fatalError() }
 //        guard let nutrient = Composition(rawValue: indexPath.row) else { return cell }
         let nutrient = Composition.allCases[indexPath.row]
-        let nutrientString = nutrient.nameString
+        let nutrientNameString = nutrient.nameString
         
         guard let selectFood = selectFood else { return cell }
 
-        var value: String
+        var valueString: String
         switch nutrient {
-        case .foodCode: value = String(selectFood.foodCode )
-        case .foodName: value = selectFood.foodName
-        case .energy: value = String(selectFood.energy) + " g"
-        case .water: value = String(selectFood.water) + " g"
-        case .protein: value = String(selectFood.protein) + " g"
-        case .fat: value = String(selectFood.fat) + " g"
-        case .dietaryfiber: value = String(selectFood.dietaryfiber) + " g"
-        case .carbohydrate: value = String(selectFood.carbohydrate) + " g"
-        case .category: value = selectFood.category
-        case .weight: value = "100gあたり"
+        case .foodCode: valueString = String(selectFood.foodCode )
+        case .foodName: valueString = selectFood.foodName
+        case .energy: valueString = String(selectFood.energy) + " g"
+        case .water: valueString = String(selectFood.water) + " g"
+        case .protein: valueString = String(selectFood.protein) + " g"
+        case .fat: valueString = String(selectFood.fat) + " g"
+        case .dietaryfiber: valueString = String(selectFood.dietaryfiber) + " g"
+        case .carbohydrate: valueString = String(selectFood.carbohydrate) + " g"
+        case .category: valueString = selectFood.category
+        case .weight: valueString = "100gあたり"
         }
 
         var content = UIListContentConfiguration.valueCell()
-        content.text = nutrientString
-        content.secondaryText = value
+        content.text = nutrientNameString
+        content.secondaryText = valueString
         cell.contentConfiguration = content
         return cell
     }

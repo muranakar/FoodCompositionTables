@@ -269,7 +269,4 @@ struct PFC { // Protein Fat Carbohydrate
     }
 }
 
-//struct SelectFood {
-//    let food: FoodCompositionObject
-//    let weight: Double
-//}
+

@@ -15,9 +15,10 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     @IBOutlet private weak var registFoodButton: UIButton!
     
     var repository = FoodTabelRepositoryImpr()
-    var selectFoods: [SelectFood] {
-        repository.loadSelectFoods()
-    }
+//    var selectFoods: [SelectFood] {
+//        repository.loadSelectFoods()
+//    }
+    var selectFoods: [SelectFood] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,7 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     }
     
     private func displayEnergy() {
-        let totalEnergy:Int
+        let totalEnergy: Int
         = selectFoods
             .map({ $0.foodObject?.energy ?? 0 })
             .reduce(0,+)
