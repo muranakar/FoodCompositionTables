@@ -15,11 +15,6 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
     
     weak var delegate: FoodListViewTransitonDelegate?
     
-//    private let defaultCategory: [String] = FoodComposition.defaultCategory
-
-    private let defaultCategory: [String] =  CategoryType.allCases.map { $0.name }
-
-    
     private var realmRepository = FoodTabelRepositoryImpr()
     private var foodList: [FoodCompositionObject] = []
     private var searchedFoodList: [FoodCompositionObject] = []
@@ -96,8 +91,7 @@ extension FoodListViewController: UITableViewDelegate {
 //
 //        foodRegistrationViewController.delegate = self
         
-        for case defaultCategory[indexPath.section] in defaultCategory {
-            
+        for case CategoryType.allCases[indexPath.section] in CategoryType.allCases {
             let searchedFoodList: [FoodCompositionObject]
             
             if searchController.isActive {
@@ -106,11 +100,29 @@ extension FoodListViewController: UITableViewDelegate {
                 searchedFoodList = self.foodList
             }
             
-            let selectingFoods = searchedFoodList.filter { $0.category == self.defaultCategory[indexPath.section] }
+            let selectingFoods = searchedFoodList.filter {
+                $0.category == CategoryType.allCases[indexPath.section].name
+            }
+            
             self.selectingFood = selectingFoods[indexPath.row]
 //            foodRegistrationViewController.selectingFood = selectingFoods[indexPath.row]
             break
         }
+//        for case defaultCategory[indexPath.section] in defaultCategory {
+//
+//            let searchedFoodList: [FoodCompositionObject]
+//
+//            if searchController.isActive {
+//                searchedFoodList = self.searchedFoodList
+//            } else {
+//                searchedFoodList = self.foodList
+//            }
+//
+//            let selectingFoods = searchedFoodList.filter { $0.category == self.defaultCategory[indexPath.section] }
+//            self.selectingFood = selectingFoods[indexPath.row]
+////            foodRegistrationViewController.selectingFood = selectingFoods[indexPath.row]
+//            break
+//        }
         
         performSegue(withIdentifier: "toFoodCompositionVC", sender: nil)
 //        navigationController?.addChild(foodRegistrationViewController)
@@ -121,11 +133,11 @@ extension FoodListViewController: UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return defaultCategory.count
+        return CategoryType.allCases.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return defaultCategory[section]
+        return CategoryType.allCases[section].name
     }
 }
 
@@ -133,15 +145,20 @@ extension FoodListViewController: UITableViewDataSource {
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        for case defaultCategory[section] in defaultCategory {
+        for case CategoryType.allCases[section] in CategoryType.allCases {
+            
             let searchedFoodList: [FoodCompositionObject]
+            
             if searchController.isActive {
                 searchedFoodList = self.searchedFoodList
             } else {
                 searchedFoodList = self.foodList
             }
             
-            let searchedFoodsCount = searchedFoodList.filter { $0.category == defaultCategory[section] }.count
+            let searchedFoodsCount = searchedFoodList.filter {
+                $0.category == CategoryType.allCases[section].name
+            }.count
+            
             return searchedFoodsCount
         }
         
@@ -152,15 +169,20 @@ extension FoodListViewController: UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { fatalError() }
         
-        for case defaultCategory[indexPath.section] in defaultCategory {
+        for case CategoryType.allCases[indexPath.section] in CategoryType.allCases {
+            
             let searchedFoodList: [FoodCompositionObject]
+            
             if searchController.isActive {
                 searchedFoodList = self.searchedFoodList
             } else {
                 searchedFoodList = self.foodList
             }
             
-            let filterdFoods = searchedFoodList.filter { $0.category == self.defaultCategory[indexPath.section] }
+            let filterdFoods = searchedFoodList.filter {
+                $0.category == CategoryType.allCases[indexPath.section].name
+            }
+            
             let foodName = filterdFoods[indexPath.row].foodName
             cell.textLabel?.text = foodName
             cell.textLabel?.numberOfLines = 2
@@ -178,6 +200,7 @@ extension FoodListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         print("searching")
+        
         searchedFoodList = foodList.filter {
              let foodName = $0.foodName
              guard let searchBarText = searchController.searchBar.text else {
@@ -186,6 +209,7 @@ extension FoodListViewController: UISearchResultsUpdating {
             let searchedFood = foodName.contains( searchBarText.lowercased())
             return searchedFood
         }
+        
         tableView.reloadData()
     }
 }
