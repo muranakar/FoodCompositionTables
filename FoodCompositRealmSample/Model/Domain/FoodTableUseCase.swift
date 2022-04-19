@@ -7,8 +7,3 @@
 
 import Foundation
 
-class FoodTableUseCase {
-    
-    let foodTableRepository = FoodTabelRepositoryImpr()
-    
-}
