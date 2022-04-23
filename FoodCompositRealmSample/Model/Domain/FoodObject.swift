@@ -50,6 +50,25 @@ enum Composition {
             .weight(min: nil, max: nil)
         ]
     }
+    
+    func valueString(in selectFood:FoodObject) -> String {
+        let valueString:String
+        
+        switch self {
+        case .foodCode: valueString = String(selectFood.foodCode )
+        case .foodName: valueString = selectFood.foodName
+        case .energy: valueString = String(selectFood.energy) + " g"
+        case .water: valueString = String(selectFood.water) + " g"
+        case .protein: valueString = String(selectFood.protein) + " g"
+        case .fat: valueString = String(selectFood.fat) + " g"
+        case .dietaryfiber: valueString = String(selectFood.dietaryfiber) + " g"
+        case .carbohydrate: valueString = String(selectFood.carbohydrate) + " g"
+        case .category: valueString = selectFood.category
+        case .weight: valueString = "100gあたり"
+        }
+
+        return valueString
+    }
 }
 
 enum CategoryType:Int, CaseIterable {
@@ -112,7 +131,7 @@ enum KetogenicIndexType: Int, CaseIterable {
     }
 }
 
-struct FoodCompositionObject: Equatable {
+struct FoodObject: Equatable {
     
     var id: Int?
     var foodCode: Int
@@ -126,6 +145,8 @@ struct FoodCompositionObject: Equatable {
     var category: String
     
     var sugar: Double
+    
+    var defaultWeight: Double = 100
     
     init(food: FoodComposition) {
         id = food.id
@@ -142,7 +163,6 @@ struct FoodCompositionObject: Equatable {
         
         //TODO: sugarの扱いの検討
         sugar = carbohydrate - dietaryfiber
-        
     }
 }
 
@@ -178,7 +198,7 @@ struct PFS { // Protein Fat Sugar
     }
     
     //Tableからのイニシャライズ
-    init(food: FoodCompositionObject){
+    init(food: FoodObject){
         protein = food.protein
         fat = food.fat
         sugar = food.sugar
@@ -238,7 +258,7 @@ struct PFC { // Protein Fat Carbohydrate
     }
     
     //Tableからのイニシャライズ
-    init(food: FoodCompositionObject){
+    init(food: FoodObject){
         protein = food.protein
         fat = food.fat
         carbohydrate = food.carbohydrate

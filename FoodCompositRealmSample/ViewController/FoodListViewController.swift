@@ -15,15 +15,14 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
     
     weak var delegate: FoodListViewTransitonDelegate?
     
-    private var realmRepository = FoodTabelRepositoryImpr()
-    
-    private var foodList: [FoodCompositionObject] = []
-    private var selectingFood: FoodCompositionObject?
-    private var searchedFoodList: [FoodCompositionObject] = []
-    
+    private var selectingFood: FoodObject?
+    private var foodList: [FoodObject] = []
+    private var searchedFoodList: [FoodObject] = []
     private var searchController = UISearchController()
     
     @IBOutlet private weak var tableView: UITableView!
+    
+    //検索時のTableViewを覆い隠す用
     @IBOutlet private weak var coverView: UIView!
     @IBOutlet private weak var contentsCoverView: UIView!
     
@@ -35,24 +34,23 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
         tableView.dataSource = self
         
         setupSearchBar()
-        configureRealm()
+        configure()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let foodCompositonVC = segue.destination as? FoodCompositionViewController else { return }
         guard let selectingFood = selectingFood else { return }
         foodCompositonVC.selectFood = selectingFood
+        foodCompositonVC.delegate = self
     }
     
-    private func configureRealm() {
-        foodList = realmRepository.loadFoodTable()
+    private func configure() {
+        foodList = FoodCompositionTableUseCase().foodTable
     }
     
     private func setupSearchBar() {
-        //        searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         navigationItem.searchController?.searchResultsUpdater = self
-        //        navigationItem.searchController?.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController?.hidesNavigationBarDuringPresentation = false
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -65,73 +63,57 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
         self.dismiss(animated: true)
     }
     
-    func cancelResistration() {
+//    func cancelResistration() {
+//        if let childrenCount = navigationController?.children.count,
+//           childrenCount > 0 {
+//            print("chileあり")
+//            for case let child as FoodRegistrationViewController in navigationController!.children {
+//                print("FoodRegistrationViewControllerがありました")
+//                child.view.removeFromSuperview()
+//                child.removeFromParent()
+//            }
+//        }
+//    }
+    
+    struct Section {
+        let indexPath: IndexPath
         
-        if let childrenCount = navigationController?.children.count,
-           childrenCount > 0 {
-            print("chileあり")
-            for case let child as FoodRegistrationViewController in navigationController!.children {
-                print("FoodRegistrationViewControllerがありました")
-                child.view.removeFromSuperview()
-                child.removeFromParent()
-            }
+        var number: Int {
+            self.indexPath.section
         }
         
-       
+        init(at indexPath: IndexPath) {
+            self.indexPath = indexPath
+        }
+    }
+    
+    func arrange(_ foods: [FoodObject], in section: Section) -> [FoodObject] {
+        
+        for case CategoryType.allCases[section.number] in CategoryType.allCases {
+            let filterdFoods = foods.filter {
+                $0.category == CategoryType.allCases[section.number].name
+            }
+            return filterdFoods
+        }
+        //かからなければ空の配列を返す
+        return []
     }
 }
 
 extension FoodListViewController: UITableViewDelegate {
     // 各セルを選択した時に実行されるメソッド
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let foodRegistrationViewController
-//                = storyboard?.instantiateViewController(identifier: "popover")
-//                as? FoodRegistrationViewController else {
-//                    print("failed to instantiate")
-//                    return
-//                }
-//
-//        foodRegistrationViewController.delegate = self
         
-        for case CategoryType.allCases[indexPath.section] in CategoryType.allCases {
-            let searchedFoodList: [FoodCompositionObject]
-            
-            if searchController.isActive {
-                searchedFoodList = self.searchedFoodList
-            } else {
-                searchedFoodList = self.foodList
-            }
-            
-            let selectingFoods = searchedFoodList.filter {
-                $0.category == CategoryType.allCases[indexPath.section].name
-            }
-            
-            self.selectingFood = selectingFoods[indexPath.row]
-//            foodRegistrationViewController.selectingFood = selectingFoods[indexPath.row]
-            break
+        let searchedFoodList: [FoodObject]
+        
+        if searchController.isActive {
+            searchedFoodList = arrange(self.searchedFoodList, in: Section(at: indexPath))
+        } else {
+            searchedFoodList = arrange(self.foodList, in: Section(at: indexPath))
         }
-//        for case defaultCategory[indexPath.section] in defaultCategory {
-//
-//            let searchedFoodList: [FoodCompositionObject]
-//
-//            if searchController.isActive {
-//                searchedFoodList = self.searchedFoodList
-//            } else {
-//                searchedFoodList = self.foodList
-//            }
-//
-//            let selectingFoods = searchedFoodList.filter { $0.category == self.defaultCategory[indexPath.section] }
-//            self.selectingFood = selectingFoods[indexPath.row]
-////            foodRegistrationViewController.selectingFood = selectingFoods[indexPath.row]
-//            break
-//        }
         
+        self.selectingFood = searchedFoodList[indexPath.row]
         performSegue(withIdentifier: "toFoodCompositionVC", sender: nil)
-//        navigationController?.addChild(foodRegistrationViewController)
-//        foodRegistrationViewController.view.frame = self.view.frame
-//        self.navigationController?.view.addSubview(foodRegistrationViewController.view)
-//
-//        foodRegistrationViewController.didMove(toParent: self)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -147,33 +129,10 @@ extension FoodListViewController: UITableViewDataSource {
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        for case CategoryType.allCases[section] in CategoryType.allCases {
-            
-            let searchedFoodList: [FoodCompositionObject]
-            
-            if searchController.isActive {
-                searchedFoodList = self.searchedFoodList
-            } else {
-                searchedFoodList = self.foodList
-            }
-            
-            let searchedFoodsCount = searchedFoodList.filter {
-                $0.category == CategoryType.allCases[section].name
-            }.count
-            
-            return searchedFoodsCount
-        }
-        
-        return 0
-    }
-    // 各セルの内容を返すメソッド
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { fatalError() }
-        
-        for case CategoryType.allCases[indexPath.section] in CategoryType.allCases {
-            
-            let searchedFoodList: [FoodCompositionObject]
+        let sectionCategory = CategoryType.allCases[section]
+      
+        for case sectionCategory in CategoryType.allCases {
+            let searchedFoodList: [FoodObject]
             
             if searchController.isActive {
                 searchedFoodList = self.searchedFoodList
@@ -182,68 +141,55 @@ extension FoodListViewController: UITableViewDataSource {
             }
             
             let filterdFoods = searchedFoodList.filter {
-                $0.category == CategoryType.allCases[indexPath.section].name
+                $0.category == sectionCategory.name
             }
             
-            let foodName = filterdFoods[indexPath.row].foodName
-            cell.textLabel?.text = foodName
-            cell.textLabel?.numberOfLines = 2
-            break
+            let filterdFoodsCount = filterdFoods.count
+            return filterdFoodsCount
         }
+        return 0
+    }
+    // 各セルの内容を返すメソッド
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { fatalError() }
+        
+        let resultedFoodList: [FoodObject]
+        
+        if searchController.isActive {
+            resultedFoodList = arrange(searchedFoodList, in: Section(at: indexPath))
+        } else {
+            resultedFoodList = arrange(foodList, in: Section(at: indexPath))
+        }
+        
+        let foodName = resultedFoodList[indexPath.row].foodName
+        
+        var content = UIListContentConfiguration.cell()
+        content.text = foodName
+        content.textProperties.numberOfLines = 2
+        cell.contentConfiguration = content
         return cell
     }
 }
 
 extension FoodListViewController: UISearchBarDelegate {
     
+
 }
 
 extension FoodListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        print("searching")
-        
-        searchedFoodList = foodList.filter {
-             let foodName = $0.foodName
-             guard let searchBarText = searchController.searchBar.text else {
-                      return false
-                  }
-            let searchedFood = foodName.contains( searchBarText.lowercased())
-            return searchedFood
-        }
-        
+        guard let searchBarText = searchController.searchBar.text else { return }
+        searchedFoodList = search(for: searchBarText, in: foodList)
         tableView.reloadData()
     }
+    
+    func search(for text: String, in foods: [FoodObject]) -> [FoodObject] {
+        let searchedFoods = foods.filter {
+            let searchedFood = $0.foodName.contains(text.lowercased())
+            return searchedFood
+        }
+        return searchedFoods
+    }
 }
-
-
-//        guard let navigationBarViewFrame = self.navigationController?.navigationBar.frame else {
-//            return print("navigationBarViewFrame is nil")
-//        }
-//        coverView.frame = navigationBarViewFrame
-//        navigationController?.view.addSubview(coverView)
-//        coverView.isHidden = false
-//
-//        contentsCoverView.map {
-//            $0.frame.size.height = self.view.frame.size.height - navigationBarViewFrame.size.height
-//            $0.frame.size.width = self.view.frame.size.width
-//            $0.frame.origin.x = self.coverView.frame.minX
-//            $0.frame.origin.y = self.coverView.frame.maxY
-//        }
-//        self.view.addSubview(contentsCoverView)
-//        contentsCoverView.isHidden = false
-
-//        if self.children.count > 0 {
-//            for child in children {
-//                child.view.removeFromSuperview()
-//                child.removeFromParent()
-//            }
-//        }
-
-//        coverView.isHidden = true
-//        contentsCoverView.isHidden = true
-
-//            let selectingFoods = searchedFoodList?.where { $0.category == self.defaultCategory[indexPath.section] }
-
-//        self.navigationController?.navigationBar.layer.zPosition = -1
-//        self.view.bringSubviewToFront(foodRegistrationViewController.view)

@@ -9,21 +9,14 @@ import Foundation
 import UIKit
 
 final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
-    
-    @IBOutlet private weak var energyLabel: UILabel!
+    // TODO: repositoryからのデータをUseCaseに取り込めるようにする必要がある
+    let selectFoodTableUseCase = SelectFoodsTableUseCase()
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var registFoodButton: UIButton!
-    
-    var repository = FoodTabelRepositoryImpr()
-//    var selectFoods: [SelectFood] {
-//        repository.loadSelectFoods()
-//    }
-    var selectFoods: [SelectFood] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self))
         tableView.delegate = self
@@ -36,52 +29,69 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     
     private func setup() {
         registFoodButton.layer.cornerRadius = registFoodButton.frame.height / 2
-        displayEnergy()
     }
     
-    private func displayEnergy() {
-        let totalEnergy: Int
-        = selectFoods
-            .map({ $0.foodObject?.energy ?? 0 })
-            .reduce(0,+)
-        
-        energyLabel.text = String(totalEnergy) + "kcal"
+    private func configure() {
+        refleshCompositionValue()
+    }
+    
+    private func refleshCompositionValue() {
+        selectFoodTableUseCase.loadSelectFoods()
+        print("totalEnergy:\(selectFoodTableUseCase.totalEnergy)")
+        print("totalProtein:\(selectFoodTableUseCase.totalProtein)")
+        print("totalFat:\(selectFoodTableUseCase.totalFat)")
+        print("totalCarbohydrate:\(selectFoodTableUseCase.totalCarbohydrate)")
     }
     
     @objc private func addFoodTouchUpInside() {
         guard let navigationController = storyboard?.instantiateViewController(withIdentifier: "NavigationController") as? UINavigationController else { return }
         guard let foodListViewController = navigationController.viewControllers[0] as? FoodListViewController else { return }
-        foodListViewController.delegate = self
         
+        foodListViewController.delegate = self
         self.present(navigationController, animated: true, completion: nil)
     }
     
     func transitPresentingVC(_: () -> Void) {
-        self.displayEnergy()
+        refleshCompositionValue()
         self.tableView.reloadData()
     }
 }
 
 extension MainViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //FoodCompositionViewContollerへ遷移
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        repository.delete(selectFood: selectFoods[indexPath.row])
-        displayEnergy()
+        
+        let selectFood = selectFoodTableUseCase.selectedFoods[indexPath.row]
+        selectFoodTableUseCase.delete(selectFood: selectFood)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        refleshCompositionValue()
     }
 }
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectFoods.count
+        selectFoodTableUseCase.selectedFoodsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(UITableViewCell.self), for: indexPath)
-        let foodName:[String]? = selectFoods.map { $0.foodObject?.food_name ?? "" }
-        cell.textLabel?.text = foodName?[indexPath.row]
+        let cell
+        = tableView
+            .dequeueReusableCell(withIdentifier: NSStringFromClass(UITableViewCell.self),
+                                 for: indexPath)
+       
+        let foodNameList
+        = selectFoodTableUseCase
+            .selectedFoods
+            .map { $0.food.foodName }
+        
+        var content = UIListContentConfiguration.cell()
+        content.text = foodNameList[indexPath.row]
+        cell.contentConfiguration = content
         return cell
     }
 }

@@ -10,9 +10,9 @@ import RealmSwift
 
 protocol FoodTableRepository {
     func initializeRealm()
-    func save(selectFood: SelectFood)
-    func loadSelectFoods() -> [SelectFood]
-    func loadFoodTable() -> [FoodCompositionObject]
+    func save(selectFood: SelectFoodObject)
+    func loadSelectFoods() -> [SelectFoodObject]
+    func loadFoodTable() -> [FoodObject]
 }
 
 final class FoodTabelRepositoryImpr: FoodTableRepository {    
@@ -54,7 +54,37 @@ final class FoodTabelRepositoryImpr: FoodTableRepository {
         }
     }
     
-    func save(selectFood: SelectFood) {
+    //Adapter?
+    func convert(selectFoodObject: SelectFoodObject) -> SelectFood {
+        let selectFoodId = selectFoodObject.food.id
+        let foodObject
+        = realm
+            .objects(FoodComposition.self)
+            .first { $0.id == selectFoodId }
+        let weight = selectFoodObject.weight
+        
+        let selectFood = SelectFood.init()
+        selectFood.foodObject = foodObject
+        selectFood.foodWeight = weight
+        return selectFood
+    }
+    
+    func find(selectFoodObject: SelectFoodObject) -> SelectFood? {
+        let selectFoodId = selectFoodObject.food.id
+        let selectfood
+        = realm
+            .objects(SelectFood.self)
+            .first { $0.foodObject?.id == selectFoodId }
+        
+        return selectfood
+    }
+    
+    
+    
+    //TODO: FoodCompositionはできるけどWeightが入らない
+    func save(selectFood: SelectFoodObject) {
+        let selectFood = convert(selectFoodObject: selectFood)
+        
         do {
             try realm.write() {
                 realm.add(selectFood)
@@ -64,31 +94,36 @@ final class FoodTabelRepositoryImpr: FoodTableRepository {
         }
     }
     
-    func loadSelectFoods() -> [SelectFood] {
+    func loadSelectFoods() -> [SelectFoodObject] {
         let selectFoodsResults
         = realm
             .objects(SelectFood.self)
             .sorted(byKeyPath: "objectId",
                     ascending: true)
-        let selectFoods = Array(selectFoodsResults)
+        
+        let selectFoods:[SelectFoodObject] = Array(selectFoodsResults).compactMap {
+            guard let food = $0.foodObject else { return nil }
+            let selectfood = FoodObject(food: food)
+            return SelectFoodObject(food: selectfood, weight: $0.foodWeight)
+        }
         return selectFoods
     }
     
-    func loadFoodTable() -> [FoodCompositionObject] {
+    func loadFoodTable() -> [FoodObject] {
         let allFoodsResults
         = realm
             .objects(FoodComposition.self)
             .sorted(byKeyPath: "id",
                     ascending: true)
         let allFoods = Array(allFoodsResults).map {
-            FoodCompositionObject(food: $0)
+            FoodObject(food: $0)
         }
-//        let allFood = allFoods.map { Nutrients(food: $0) }
         return allFoods
     }
     
-    func delete(selectFood: SelectFood) {
+    func delete(selectFoodObject: SelectFoodObject) {
         do {
+            guard let selectFood = find(selectFoodObject: selectFoodObject) else { return }
             try realm.write() {
                 realm.delete(selectFood)
             }
@@ -96,4 +131,5 @@ final class FoodTabelRepositoryImpr: FoodTableRepository {
             print("error")
         }
     }
+
 }
