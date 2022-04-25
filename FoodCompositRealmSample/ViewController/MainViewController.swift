@@ -51,6 +51,16 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
         self.present(navigationController, animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let ResultVC = segue.destination as? ResultViewController else { return }
+        let pfc = PFC(protein: selectFoodTableUseCase.totalProtein,
+                                fat: selectFoodTableUseCase.totalFat,
+                                carbohydrate: selectFoodTableUseCase.totalCarbohydrate)
+        ResultVC.pfcRatio = (pfc.proteinPercentEnergy,
+                             pfc.fatPercentEnergy,
+                             pfc.carbohydratePercentEnergy)
+    }
+    
     func transitPresentingVC(_: () -> Void) {
         refleshCompositionValue()
         self.tableView.reloadData()

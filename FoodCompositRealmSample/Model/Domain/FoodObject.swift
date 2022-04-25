@@ -189,7 +189,7 @@ struct PFS { // Protein Fat Sugar
     var sugarPercentEnergy: Double {
         (( sugar * 4) / energy ) * 100
     }
-    
+
     var ketogenicValue: Double? {
         if (sugar + 0.1 * fat + 0.58 * protein) == 0 { return nil }
         let index =  (0.9 * fat + 0.46 * protein) / (sugar + 0.1 * fat + 0.58 * protein)

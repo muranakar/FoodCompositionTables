@@ -7,5 +7,6 @@ target 'FoodCompositionTables' do
 
   # Pods for FoodCompositRealmSample
   pod 'RealmSwift'
+  pod 'Charts'
 
 end

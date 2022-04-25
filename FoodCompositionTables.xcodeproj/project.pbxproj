@@ -12,8 +12,7 @@
 		184788E327DB4DC500E406F0 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184788E127DB4DC500E406F0 /* CustomTableViewCell.xib */; };
 		1889C31A280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889C319280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift */; };
 		1889C31D280FFED900BEFD6D /* SelectFoodObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889C31C280FFED900BEFD6D /* SelectFoodObject.swift */; };
-		1889C35F281368D700BEFD6D /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889C35D281368D600BEFD6D /* ResultViewController.swift */; };
-		1889C360281368D700BEFD6D /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1889C35E281368D700BEFD6D /* ResultViewController.xib */; };
+		189E22AF28166E8600E723AC /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E22AE28166E8600E723AC /* ResultViewController.swift */; };
 		18B1FE6D27CC9E61001124FF /* initial.realm in Resources */ = {isa = PBXBuildFile; fileRef = 18B1FE6B27CC9E60001124FF /* initial.realm */; };
 		18B1FE6E27CC9E61001124FF /* FoodTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1FE6C27CC9E61001124FF /* FoodTableModel.swift */; };
 		18B389F627C91687009AAB65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B389F527C91687009AAB65 /* MainViewController.swift */; };
@@ -22,7 +21,7 @@
 		18C04A1327FDE88800164DD8 /* SelectFoodsTableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1227FDE88800164DD8 /* SelectFoodsTableUseCase.swift */; };
 		18C04A1D2801C5ED00164DD8 /* FoodCompositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1C2801C5ED00164DD8 /* FoodCompositionViewController.swift */; };
 		18C04A1F2801C76B00164DD8 /* FoodObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1E2801C76B00164DD8 /* FoodObject.swift */; };
-		43B4B324FC5857D4743EE0A7 /* Pods_FoodCompositionTables.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F35C5B9858914206C923B301 /* Pods_FoodCompositionTables.framework */; };
+		77B9C1540BFAD78B7DE7700A /* Pods_FoodCompositionTables.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CE601F85450C45B1CA4B5C9 /* Pods_FoodCompositionTables.framework */; };
 		8A5D0679279F4876002D2276 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D0678279F4876002D2276 /* AppDelegate.swift */; };
 		8A5D067B279F4876002D2276 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D067A279F4876002D2276 /* SceneDelegate.swift */; };
 		8A5D067D279F4876002D2276 /* FoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D067C279F4876002D2276 /* FoodListViewController.swift */; };
@@ -42,14 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		024238A1577524AC5AFA1B4D /* Pods-FoodCompositionTables.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCompositionTables.release.xcconfig"; path = "Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables.release.xcconfig"; sourceTree = "<group>"; };
+		0CE601F85450C45B1CA4B5C9 /* Pods_FoodCompositionTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodCompositionTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		182596B827D8B12A00DFCD2A /* FoodTableRepositoryImpr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableRepositoryImpr.swift; sourceTree = "<group>"; };
 		184788E027DB4DC500E406F0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		184788E127DB4DC500E406F0 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		1889C319280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCompositionTableUseCase.swift; sourceTree = "<group>"; };
 		1889C31C280FFED900BEFD6D /* SelectFoodObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFoodObject.swift; sourceTree = "<group>"; };
-		1889C35D281368D600BEFD6D /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		1889C35E281368D700BEFD6D /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
+		189E22AE28166E8600E723AC /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		18B1FE6B27CC9E60001124FF /* initial.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = initial.realm; sourceTree = "<group>"; };
 		18B1FE6C27CC9E61001124FF /* FoodTableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableModel.swift; sourceTree = "<group>"; };
 		18B389F527C91687009AAB65 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -68,8 +66,8 @@
 		8A5D0681279F4881002D2276 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A5D0684279F4881002D2276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A5D0686279F4881002D2276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D94B4E24F0D5BFBF33B485BC /* Pods-FoodCompositionTables.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCompositionTables.debug.xcconfig"; path = "Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables.debug.xcconfig"; sourceTree = "<group>"; };
-		F35C5B9858914206C923B301 /* Pods_FoodCompositionTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodCompositionTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B8F92A8CFAD9243207DFA07 /* Pods-FoodCompositionTables.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCompositionTables.release.xcconfig"; path = "Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables.release.xcconfig"; sourceTree = "<group>"; };
+		E8B1C5C5E19F78F70B6CFC96 /* Pods-FoodCompositionTables.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCompositionTables.debug.xcconfig"; path = "Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43B4B324FC5857D4743EE0A7 /* Pods_FoodCompositionTables.framework in Frameworks */,
+				77B9C1540BFAD78B7DE7700A /* Pods_FoodCompositionTables.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,8 +94,6 @@
 			children = (
 				184788E027DB4DC500E406F0 /* CustomTableViewCell.swift */,
 				184788E127DB4DC500E406F0 /* CustomTableViewCell.xib */,
-				1889C35D281368D600BEFD6D /* ResultViewController.swift */,
-				1889C35E281368D700BEFD6D /* ResultViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +104,7 @@
 				18B389F527C91687009AAB65 /* MainViewController.swift */,
 				8A5D067C279F4876002D2276 /* FoodListViewController.swift */,
 				18C04A1C2801C5ED00164DD8 /* FoodCompositionViewController.swift */,
+				189E22AE28166E8600E723AC /* ResultViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -162,7 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				18B60476280CEB7500DA4A79 /* XCTest.framework */,
-				F35C5B9858914206C923B301 /* Pods_FoodCompositionTables.framework */,
+				0CE601F85450C45B1CA4B5C9 /* Pods_FoodCompositionTables.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,8 +204,8 @@
 		B97A1FE91F25B963566031E3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D94B4E24F0D5BFBF33B485BC /* Pods-FoodCompositionTables.debug.xcconfig */,
-				024238A1577524AC5AFA1B4D /* Pods-FoodCompositionTables.release.xcconfig */,
+				E8B1C5C5E19F78F70B6CFC96 /* Pods-FoodCompositionTables.debug.xcconfig */,
+				8B8F92A8CFAD9243207DFA07 /* Pods-FoodCompositionTables.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -238,11 +235,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A5D0689279F4881002D2276 /* Build configuration list for PBXNativeTarget "FoodCompositionTables" */;
 			buildPhases = (
-				97C1E5A3D415A25531ED4403 /* [CP] Check Pods Manifest.lock */,
+				BD1E8888B323C6B3C5A5DAC1 /* [CP] Check Pods Manifest.lock */,
 				8A5D0671279F4876002D2276 /* Sources */,
 				8A5D0672279F4876002D2276 /* Frameworks */,
 				8A5D0673279F4876002D2276 /* Resources */,
-				B66FBD3BC85F78BAE100A3A8 /* [CP] Embed Pods Frameworks */,
+				62485D3B7DB1004948FDB0A8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -303,7 +300,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5D0685279F4881002D2276 /* LaunchScreen.storyboard in Resources */,
-				1889C360281368D700BEFD6D /* ResultViewController.xib in Resources */,
 				8A5D0682279F4881002D2276 /* Assets.xcassets in Resources */,
 				18B1FE6D27CC9E61001124FF /* initial.realm in Resources */,
 				184788E327DB4DC500E406F0 /* CustomTableViewCell.xib in Resources */,
@@ -314,7 +310,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		97C1E5A3D415A25531ED4403 /* [CP] Check Pods Manifest.lock */ = {
+		62485D3B7DB1004948FDB0A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD1E8888B323C6B3C5A5DAC1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -334,23 +347,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B66FBD3BC85F78BAE100A3A8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -373,11 +369,11 @@
 				18C04A1327FDE88800164DD8 /* SelectFoodsTableUseCase.swift in Sources */,
 				18B389F627C91687009AAB65 /* MainViewController.swift in Sources */,
 				1889C31D280FFED900BEFD6D /* SelectFoodObject.swift in Sources */,
-				1889C35F281368D700BEFD6D /* ResultViewController.swift in Sources */,
 				18C04A1D2801C5ED00164DD8 /* FoodCompositionViewController.swift in Sources */,
 				18C04A1F2801C76B00164DD8 /* FoodObject.swift in Sources */,
 				18B60488280CECC400DA4A79 /* Test.swift in Sources */,
 				184788E227DB4DC500E406F0 /* CustomTableViewCell.swift in Sources */,
+				189E22AF28166E8600E723AC /* ResultViewController.swift in Sources */,
 				8A5D0679279F4876002D2276 /* AppDelegate.swift in Sources */,
 				182596B927D8B12A00DFCD2A /* FoodTableRepositoryImpr.swift in Sources */,
 				8A5D067B279F4876002D2276 /* SceneDelegate.swift in Sources */,
@@ -571,7 +567,7 @@
 		};
 		8A5D068A279F4881002D2276 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D94B4E24F0D5BFBF33B485BC /* Pods-FoodCompositionTables.debug.xcconfig */;
+			baseConfigurationReference = E8B1C5C5E19F78F70B6CFC96 /* Pods-FoodCompositionTables.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -590,7 +586,7 @@
 		};
 		8A5D068B279F4881002D2276 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 024238A1577524AC5AFA1B4D /* Pods-FoodCompositionTables.release.xcconfig */;
+			baseConfigurationReference = 8B8F92A8CFAD9243207DFA07 /* Pods-FoodCompositionTables.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

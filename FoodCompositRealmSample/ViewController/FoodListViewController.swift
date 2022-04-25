@@ -11,6 +11,15 @@ protocol FoodListViewTransitonDelegate: AnyObject {
     func transitPresentingVC(_: () -> Void)
 }
 
+struct Section {
+    
+    let number:Int
+    
+    init(at index: Int) {
+        self.number = index
+    }
+}
+
 class FoodListViewController: UIViewController,FoodRegistrationDelegate {
     
     weak var delegate: FoodListViewTransitonDelegate?
@@ -63,56 +72,36 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
         self.dismiss(animated: true)
     }
     
-//    func cancelResistration() {
-//        if let childrenCount = navigationController?.children.count,
-//           childrenCount > 0 {
-//            print("chileあり")
-//            for case let child as FoodRegistrationViewController in navigationController!.children {
-//                print("FoodRegistrationViewControllerがありました")
-//                child.view.removeFromSuperview()
-//                child.removeFromParent()
-//            }
-//        }
-//    }
-    
-    struct Section {
-        let indexPath: IndexPath
+    func arrange(_ foods: [FoodObject], in categorySection: Section) -> [FoodObject] {
         
-        var number: Int {
-            self.indexPath.section
-        }
-        
-        init(at indexPath: IndexPath) {
-            self.indexPath = indexPath
-        }
-    }
-    
-    func arrange(_ foods: [FoodObject], in section: Section) -> [FoodObject] {
-        
-        for case CategoryType.allCases[section.number] in CategoryType.allCases {
+        for case CategoryType.allCases[categorySection.number] in CategoryType.allCases {
             let filterdFoods = foods.filter {
-                $0.category == CategoryType.allCases[section.number].name
+                $0.category == CategoryType.allCases[categorySection.number].name
             }
             return filterdFoods
         }
         //かからなければ空の配列を返す
         return []
     }
+    
+    //indexPath.rowとsectionの使い分けが同じ中に入っているのが問題
+    func searchedResultFoods(between section: Section) -> [FoodObject] {
+        let resultedFoods: [FoodObject]
+        
+        if searchController.isActive {
+            resultedFoods = arrange(searchedFoodList, in: section)
+        } else {
+            resultedFoods = arrange(foodList, in: section)
+        }
+        return resultedFoods
+    }
 }
 
 extension FoodListViewController: UITableViewDelegate {
     // 各セルを選択した時に実行されるメソッド
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let searchedFoodList: [FoodObject]
-        
-        if searchController.isActive {
-            searchedFoodList = arrange(self.searchedFoodList, in: Section(at: indexPath))
-        } else {
-            searchedFoodList = arrange(self.foodList, in: Section(at: indexPath))
-        }
-        
-        self.selectingFood = searchedFoodList[indexPath.row]
+        let searchedFoods = searchedResultFoods(between: Section(at: indexPath.row))
+        self.selectingFood = searchedFoods[indexPath.row]
         performSegue(withIdentifier: "toFoodCompositionVC", sender: nil)
     }
     
@@ -128,41 +117,25 @@ extension FoodListViewController: UITableViewDelegate {
 extension FoodListViewController: UITableViewDataSource {
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        let sectionCategory = CategoryType.allCases[section]
-      
-        for case sectionCategory in CategoryType.allCases {
-            let searchedFoodList: [FoodObject]
-            
-            if searchController.isActive {
-                searchedFoodList = self.searchedFoodList
-            } else {
-                searchedFoodList = self.foodList
-            }
-            
-            let filterdFoods = searchedFoodList.filter {
-                $0.category == sectionCategory.name
-            }
-            
-            let filterdFoodsCount = filterdFoods.count
-            return filterdFoodsCount
-        }
-        return 0
+        let searchedResultFoods = searchedResultFoods(between: Section(at: section))
+        return searchedResultFoods.count
     }
     // 各セルの内容を返すメソッド
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { fatalError() }
         
-        let resultedFoodList: [FoodObject]
+//        let resultedFoods: [FoodObject]
         
-        if searchController.isActive {
-            resultedFoodList = arrange(searchedFoodList, in: Section(at: indexPath))
-        } else {
-            resultedFoodList = arrange(foodList, in: Section(at: indexPath))
-        }
-        
-        let foodName = resultedFoodList[indexPath.row].foodName
+//        if searchController.isActive {
+//            //ここはindex.sectionにしなければいけないのが分かりづらい
+//            resultedFoods = arrange(searchedFoodList, in: Section(at: indexPath.section))
+//        } else {
+//            resultedFoods = arrange(foodList, in: Section(at: indexPath.section))
+//        }
+
+        let searchedResultFoods = searchedResultFoods(between: Section(at: indexPath.section))
+        let foodName = searchedResultFoods[indexPath.row].foodName
         
         var content = UIListContentConfiguration.cell()
         content.text = foodName
@@ -174,7 +147,7 @@ extension FoodListViewController: UITableViewDataSource {
 
 extension FoodListViewController: UISearchBarDelegate {
     
-
+    
 }
 
 extension FoodListViewController: UISearchResultsUpdating {
