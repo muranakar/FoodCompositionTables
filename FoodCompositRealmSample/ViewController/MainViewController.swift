@@ -13,6 +13,7 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     let selectFoodTableUseCase = SelectFoodsTableUseCase()
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var registFoodButton: UIButton!
+    @IBOutlet weak var displayResultButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     
     private func setup() {
         registFoodButton.layer.cornerRadius = registFoodButton.frame.height / 2
+        displayResultButton.layer.cornerRadius = displayResultButton.frame.height / 2
     }
     
     private func configure() {
@@ -37,10 +39,6 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     
     private func refleshCompositionValue() {
         selectFoodTableUseCase.loadSelectFoods()
-        print("totalEnergy:\(selectFoodTableUseCase.totalEnergy)")
-        print("totalProtein:\(selectFoodTableUseCase.totalProtein)")
-        print("totalFat:\(selectFoodTableUseCase.totalFat)")
-        print("totalCarbohydrate:\(selectFoodTableUseCase.totalCarbohydrate)")
     }
     
     @objc private func addFoodTouchUpInside() {
@@ -52,13 +50,11 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let ResultVC = segue.destination as? ResultViewController else { return }
-        let pfc = PFC(protein: selectFoodTableUseCase.totalProtein,
-                                fat: selectFoodTableUseCase.totalFat,
-                                carbohydrate: selectFoodTableUseCase.totalCarbohydrate)
-        ResultVC.pfcRatio = (pfc.proteinPercentEnergy,
-                             pfc.fatPercentEnergy,
-                             pfc.carbohydratePercentEnergy)
+        guard let resultVC = segue.destination as? ResultViewController else {
+            return
+        }
+        resultVC.selectFoodTableUseCase.selectedFoods
+        = self.selectFoodTableUseCase.selectedFoods
     }
     
     func transitPresentingVC(_: () -> Void) {
@@ -74,7 +70,6 @@ extension MainViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         let selectFood = selectFoodTableUseCase.selectedFoods[indexPath.row]
         selectFoodTableUseCase.delete(selectFood: selectFood)
         tableView.deleteRows(at: [indexPath], with: .automatic)

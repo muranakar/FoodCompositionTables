@@ -19,7 +19,7 @@ class FoodCompositionTableUseCase {
 
 extension Array where Element == FoodObject {
     
-    func filterFoods(by composition: Composition) -> [FoodObject] {
+    func filterFoods(by composition: CompositionType) -> [FoodObject] {
         
         var filetedFoods: [FoodObject] = []
         
@@ -67,7 +67,7 @@ extension Array where Element == FoodObject {
         return filetedFoods
     }
     
-    func sortedFoods(by composition: Composition) -> [FoodObject] {
+    func sortedFoods(by composition: CompositionType) -> [FoodObject] {
         //昇順
         switch composition {
         case .foodCode: return self

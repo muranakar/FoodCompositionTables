@@ -14,9 +14,8 @@ final class FoodCompositionViewController: UIViewController, UITableViewDelegate
     
     weak var delegate: FoodRegistrationDelegate?
 
+    //prepareで分ける
     var selectFood: FoodObject?
-//    var selectFoodObject: SelectFoodObject?
-    
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var registerFoodButton: UIButton!
     @IBOutlet private weak var foodWeightTextField: UITextField!
@@ -32,21 +31,7 @@ final class FoodCompositionViewController: UIViewController, UITableViewDelegate
             .addTarget(self,
                        action: #selector(registerFoodTouchUpInside),
                        for: .touchUpInside)
-        
-//        foodWeightTextField
-//            .addTarget(self,
-//                       action: #selector(textFieldValueChanged),
-//                       for: .editingChanged)
     }
-    
-//    @objc private func textFieldValueChanged() {
-//        guard let selectFood = selectFood else { return }
-//        guard let selectFoodWeight
-//                = Double(foodWeightTextField.text ?? "") else { return }
-//
-//        selectFoodObject = SelectFoodObject(food: selectFood, weight: selectFoodWeight)
-//        tableView.reloadData()
-//    }
     
     @objc private func registerFoodTouchUpInside() {
         guard let selectFood = selectFood else { return }
@@ -61,14 +46,14 @@ final class FoodCompositionViewController: UIViewController, UITableViewDelegate
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Composition.allCases.count
+        CompositionType.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CompositionCell") else { fatalError() }
         guard let selectFood = selectFood else { return cell }
         //栄養素名称
-        let composition = Composition.allCases[indexPath.row]
+        let composition = CompositionType.allCases[indexPath.row]
         let compositionName = composition.nameString
         //栄養素量
         let compositionValueString = composition.valueString(in: selectFood)

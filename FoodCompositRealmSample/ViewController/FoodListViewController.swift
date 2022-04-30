@@ -12,9 +12,7 @@ protocol FoodListViewTransitonDelegate: AnyObject {
 }
 
 struct Section {
-    
     let number:Int
-    
     init(at index: Int) {
         self.number = index
     }
@@ -100,7 +98,7 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
 extension FoodListViewController: UITableViewDelegate {
     // 各セルを選択した時に実行されるメソッド
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let searchedFoods = searchedResultFoods(between: Section(at: indexPath.row))
+        let searchedFoods = searchedResultFoods(between: Section(at: indexPath.section))
         self.selectingFood = searchedFoods[indexPath.row]
         performSegue(withIdentifier: "toFoodCompositionVC", sender: nil)
     }
@@ -110,6 +108,7 @@ extension FoodListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        //CategoryTypeによるsectionの区別
         return CategoryType.allCases[section].name
     }
 }
@@ -124,16 +123,7 @@ extension FoodListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { fatalError() }
-        
-//        let resultedFoods: [FoodObject]
-        
-//        if searchController.isActive {
-//            //ここはindex.sectionにしなければいけないのが分かりづらい
-//            resultedFoods = arrange(searchedFoodList, in: Section(at: indexPath.section))
-//        } else {
-//            resultedFoods = arrange(foodList, in: Section(at: indexPath.section))
-//        }
-
+        //ここはindex.sectionにしなければいけないのが分かりづらい
         let searchedResultFoods = searchedResultFoods(between: Section(at: indexPath.section))
         let foodName = searchedResultFoods[indexPath.row].foodName
         
