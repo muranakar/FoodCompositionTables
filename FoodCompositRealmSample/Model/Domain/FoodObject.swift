@@ -131,14 +131,14 @@ struct PFC { // Protein Fat Carbohydrate
         return roundedIndex
     }
     
-    //Tableからのイニシャライズ
+    //Repositoryからのイニシャライズ
     init(food: FoodObject){
         protein = food.protein
         fat = food.fat
         carbohydrate = food.carbohydrate
     }
     
-    //UIからのイニシャライズ
+    //任意でのイニシャライズ
     init(protein: Double, fat: Double, carbohydrate: Double) {
         self.protein = protein
         self.fat = fat
