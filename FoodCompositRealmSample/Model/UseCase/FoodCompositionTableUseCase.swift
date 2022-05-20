@@ -10,18 +10,17 @@ import Foundation
 
 
 class FoodCompositionTableUseCase {
-    
+        
     let repository = FoodTabelRepositoryImpr()
         
     var foodTable: [FoodObject] {
         repository.loadFoodTable()
     }
- //TODO:PFC比率のタプル
 }
 
 extension Array where Element == FoodObject {
     
-    func filterFoods(by composition: CompositionType) -> [FoodObject] {
+    func filter(by composition: FoodCompositionType) -> [FoodObject] {
         
         var filetedFoods: [FoodObject] = []
         
@@ -69,7 +68,7 @@ extension Array where Element == FoodObject {
         return filetedFoods
     }
     
-    func sortedFoods(by composition: CompositionType) -> [FoodObject] {
+    func sorted(by composition: FoodCompositionType) -> [FoodObject] {
         //昇順
         switch composition {
         case .foodCode: return self

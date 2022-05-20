@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		182596B927D8B12A00DFCD2A /* FoodTableRepositoryImpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182596B827D8B12A00DFCD2A /* FoodTableRepositoryImpr.swift */; };
-		1887DC39281DC0AF00EEBBB3 /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887DC38281DC0AF00EEBBB3 /* CategoryType.swift */; };
-		1887DC3B281DC0F000EEBBB3 /* CompositionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887DC3A281DC0F000EEBBB3 /* CompositionType.swift */; };
+		1887DC39281DC0AF00EEBBB3 /* FoodCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887DC38281DC0AF00EEBBB3 /* FoodCategoryType.swift */; };
+		1887DC3B281DC0F000EEBBB3 /* FoodCompositionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887DC3A281DC0F000EEBBB3 /* FoodCompositionType.swift */; };
 		1889C31A280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889C319280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift */; };
 		1889C31D280FFED900BEFD6D /* SelectFoodObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889C31C280FFED900BEFD6D /* SelectFoodObject.swift */; };
 		189E22AF28166E8600E723AC /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E22AE28166E8600E723AC /* ResultViewController.swift */; };
@@ -43,8 +43,8 @@
 /* Begin PBXFileReference section */
 		0CE601F85450C45B1CA4B5C9 /* Pods_FoodCompositionTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodCompositionTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		182596B827D8B12A00DFCD2A /* FoodTableRepositoryImpr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableRepositoryImpr.swift; sourceTree = "<group>"; };
-		1887DC38281DC0AF00EEBBB3 /* CategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryType.swift; sourceTree = "<group>"; };
-		1887DC3A281DC0F000EEBBB3 /* CompositionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionType.swift; sourceTree = "<group>"; };
+		1887DC38281DC0AF00EEBBB3 /* FoodCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryType.swift; sourceTree = "<group>"; };
+		1887DC3A281DC0F000EEBBB3 /* FoodCompositionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCompositionType.swift; sourceTree = "<group>"; };
 		1889C319280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCompositionTableUseCase.swift; sourceTree = "<group>"; };
 		1889C31C280FFED900BEFD6D /* SelectFoodObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFoodObject.swift; sourceTree = "<group>"; };
 		189E22AE28166E8600E723AC /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -89,13 +89,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		184788DD27DB4D1500E406F0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		184788DE27DB4D1F00E406F0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,8 +115,8 @@
 			children = (
 				18C04A1227FDE88800164DD8 /* SelectFoodsTableUseCase.swift */,
 				1889C319280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift */,
-				1887DC3A281DC0F000EEBBB3 /* CompositionType.swift */,
-				1887DC38281DC0AF00EEBBB3 /* CategoryType.swift */,
+				1887DC3A281DC0F000EEBBB3 /* FoodCompositionType.swift */,
+				1887DC38281DC0AF00EEBBB3 /* FoodCategoryType.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -187,7 +180,6 @@
 		8A5D0677279F4876002D2276 /* FoodCompositRealmSample */ = {
 			isa = PBXGroup;
 			children = (
-				184788DD27DB4D1500E406F0 /* View */,
 				184788DE27DB4D1F00E406F0 /* ViewController */,
 				184788DF27DB4D2E00E406F0 /* Model */,
 				8A5D0678279F4876002D2276 /* AppDelegate.swift */,
@@ -363,7 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1887DC3B281DC0F000EEBBB3 /* CompositionType.swift in Sources */,
+				1887DC3B281DC0F000EEBBB3 /* FoodCompositionType.swift in Sources */,
 				8A5D067D279F4876002D2276 /* FoodListViewController.swift in Sources */,
 				1889C31A280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift in Sources */,
 				18C04A1327FDE88800164DD8 /* SelectFoodsTableUseCase.swift in Sources */,
@@ -377,7 +369,7 @@
 				182596B927D8B12A00DFCD2A /* FoodTableRepositoryImpr.swift in Sources */,
 				8A5D067B279F4876002D2276 /* SceneDelegate.swift in Sources */,
 				18B1FE6E27CC9E61001124FF /* FoodTableModel.swift in Sources */,
-				1887DC39281DC0AF00EEBBB3 /* CategoryType.swift in Sources */,
+				1887DC39281DC0AF00EEBBB3 /* FoodCategoryType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

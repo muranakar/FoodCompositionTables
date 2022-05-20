@@ -65,16 +65,16 @@ final class ResultViewController: UIViewController {
 extension ResultViewController: UITableViewDelegate,UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CompositionType.resultCases.count
+        return FoodCompositionType.resultCases.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell") else { fatalError() }
         //栄養素名称
-        let compositionType = CompositionType.resultCases[indexPath.row]
+        let compositionType = FoodCompositionType.resultCases[indexPath.row]
         let compositionName = compositionType.nameString
         //栄養素量
-        let compositionValue = selectFoodTableUseCase.valueString(in: compositionType)
+        let compositionValue = selectFoodTableUseCase.getCompositionValueString(of: compositionType)
 
         var content = UIListContentConfiguration.valueCell()
         content.text = compositionName

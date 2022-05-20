@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CategoryType:Int, CaseIterable {
+enum FoodCategoryType:Int, CaseIterable {
     
     case koku = 0
     case imo

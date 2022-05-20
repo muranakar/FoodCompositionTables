@@ -9,7 +9,7 @@ import Foundation
 
 class SelectFoodsTableUseCase {
     
-    var repository = FoodTabelRepositoryImpr()
+    let repository = FoodTabelRepositoryImpr()
     
     var selectedFoods: [SelectFoodObject] = []
     
@@ -93,7 +93,7 @@ class SelectFoodsTableUseCase {
         repository.save(selectFood: selectFood)
     }
     
-    func valueString(in compositionType: CompositionType) -> String {
+    func getCompositionValueString(of compositionType: FoodCompositionType) -> String {
         
         let valueString:String
         switch compositionType {
@@ -111,10 +111,4 @@ class SelectFoodsTableUseCase {
 
         return valueString
     }
-}
-
-extension Array where  Element == SelectFoodObject {
-//    func foodNameList() -> [String] {
-//
-//    }
 }

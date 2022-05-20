@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CompositionType: Equatable {
+enum FoodCompositionType: Equatable {
     //UseCaseかな、そのために利用しているようなところが
     case foodCode
     case foodName
@@ -17,7 +17,7 @@ enum CompositionType: Equatable {
     case fat(min:Double?,max:Double?)
     case dietaryfiber(min:Double?,max:Double?)
     case carbohydrate(min:Double?,max:Double?)
-    case category(CategoryType)
+    case category(FoodCategoryType)
     case weight(min:Double?,max:Double?)
     
     var nameString: String {
@@ -36,7 +36,7 @@ enum CompositionType: Equatable {
     }
     
     //CaseIterableを準拠できないのでプロパティとして書き起こす
-    static var allCases: [CompositionType] {
+    static var allCases: [FoodCompositionType] {
         return [
             .foodCode,
             .foodName,
@@ -52,7 +52,7 @@ enum CompositionType: Equatable {
     }
     
     //アプリケーションの事情に合わせているプロパティ
-    static var resultCases: [CompositionType] {
+    static var resultCases: [FoodCompositionType] {
         return [
             .water(min: nil, max: nil),
             .energy(min: nil, max: nil),

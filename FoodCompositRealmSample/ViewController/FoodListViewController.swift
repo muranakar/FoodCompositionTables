@@ -39,8 +39,6 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
     @IBOutlet private weak var coverView: UIView!
     @IBOutlet private weak var contentsCoverView: UIView!
     
-    @IBOutlet weak var navSettigButton: UIView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self,
@@ -78,9 +76,9 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
     
     func arrangeCell(of foods: [FoodObject], in categorySection: Section) -> [FoodObject] {
         
-        let sectionCategory = CategoryType.allCases[categorySection.number]
+        let sectionCategory = FoodCategoryType.allCases[categorySection.number]
         
-        for case sectionCategory in CategoryType.allCases {
+        for case sectionCategory in FoodCategoryType.allCases {
             let filterdFoods = foods.filter {
                 $0.category == sectionCategory.name
             }
@@ -94,10 +92,10 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
     func searchedResultFoods(between section: Section) -> [FoodObject] {
         
         let resultedFoods: [FoodObject]
-        if foodSearchBar.searchTextField.isEditing {
-            resultedFoods = arrangeCell(of: searchedFoodList, in: section)
-        } else {
+        if foodSearchBar.searchTextField.text!.isEmpty {
             resultedFoods = arrangeCell(of: foodList, in: section)
+        } else {
+            resultedFoods = arrangeCell(of: searchedFoodList, in: section)
         }
         
         return resultedFoods
@@ -113,12 +111,12 @@ extension FoodListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return CategoryType.allCases.count
+        return FoodCategoryType.allCases.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         //CategoryTypeによるsectionの区別
-        return CategoryType.allCases[section].name
+        return FoodCategoryType.allCases[section].name
     }
 
     // データの数（＝セルの数）を返すメソッド
@@ -150,14 +148,6 @@ extension FoodListViewController: UISearchBarDelegate {
         searchedFoodList = search(for: searchBarText, in: foodList)
         tableView.reloadData()
         searchBar.searchTextField.endEditing(true)
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        tableView.isUserInteractionEnabled = true
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        tableView.isUserInteractionEnabled = true
     }
     
     func search(for text: String, in foods: [FoodObject]) -> [FoodObject] {
