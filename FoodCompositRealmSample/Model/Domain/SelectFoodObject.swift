@@ -12,9 +12,9 @@ struct SelectFoodObject {
     var food: FoodObject
     var weight: Double
     
-//    var count: Int
-//    mutating func next() -> Int? {
-//        defer { count -= 1 }
-//        return count == 0 ? nil : count
-//    }
+    init?(food: FoodObject, weight: Double) {
+        guard weight >= 0 else { return nil }
+        self.food = food
+        self.weight = weight
+    }
 }
