@@ -104,7 +104,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="k2e-ef-IQP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="710"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQn-b6-dWM">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
@@ -126,17 +126,17 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2Sk-do-vdL">
-                                                <rect key="frame" x="0.0" y="350" width="414" height="200"/>
+                                                <rect key="frame" x="0.0" y="350" width="414" height="360"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="aDE-lX-thF"/>
+                                                    <constraint firstAttribute="height" constant="360" id="aDE-lX-thF"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultCell" id="dSg-Bz-eaq">
-                                                        <rect key="frame" x="0.0" y="49.5" width="414" height="43.5"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultCell" rowHeight="40" id="dSg-Bz-eaq">
+                                                        <rect key="frame" x="0.0" y="49.5" width="414" height="40"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dSg-Bz-eaq" id="CGS-kA-aoI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
@@ -172,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mwg-uu-K6O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1633.3333333333335" y="803.57142857142856"/>
+            <point key="canvasLocation" x="-2471.0144927536235" y="780.80357142857144"/>
         </scene>
         <!--検索-->
         <scene sceneID="tne-QT-ifu">
@@ -183,7 +183,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lVI-oi-F2l">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="764"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="MMh-G7-bC8" style="IBUITableViewCellStyleDefault" id="zzp-Bk-YeP">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
@@ -207,20 +207,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="h3u-ng-Cns">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="A7m-o4-LHk"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="lVI-oi-F2l" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pxP-Jt-bzf"/>
+                            <constraint firstItem="lVI-oi-F2l" firstAttribute="top" secondItem="h3u-ng-Cns" secondAttribute="bottom" id="LRy-SH-SOg"/>
+                            <constraint firstItem="h3u-ng-Cns" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gdF-US-1jL"/>
+                            <constraint firstItem="h3u-ng-Cns" firstAttribute="trailing" secondItem="lVI-oi-F2l" secondAttribute="trailing" id="hDk-3W-wfF"/>
                             <constraint firstAttribute="trailing" secondItem="lVI-oi-F2l" secondAttribute="trailing" id="qSZ-QG-AkQ"/>
                             <constraint firstItem="lVI-oi-F2l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="saD-Ck-qgF"/>
                             <constraint firstAttribute="bottom" secondItem="lVI-oi-F2l" secondAttribute="bottom" id="tFd-qV-zvz"/>
+                            <constraint firstItem="h3u-ng-Cns" firstAttribute="leading" secondItem="lVI-oi-F2l" secondAttribute="leading" id="wGc-81-EdI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="検索" id="4Wh-Rl-uee"/>
                     <connections>
                         <outlet property="contentsCoverView" destination="tW5-yz-SeA" id="sSZ-0C-LTU"/>
                         <outlet property="coverView" destination="gPL-SH-B0N" id="Gxf-TX-xuq"/>
+                        <outlet property="foodSearchBar" destination="h3u-ng-Cns" id="bPu-Ps-GWM"/>
                         <outlet property="tableView" destination="lVI-oi-F2l" id="5fV-mL-KYw"/>
                     </connections>
                 </viewController>
@@ -238,7 +249,7 @@
                     <color key="backgroundColor" name="HideViewColor"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-609" y="-241"/>
+            <point key="canvasLocation" x="-752.17391304347836" y="2.6785714285714284"/>
         </scene>
         <!--Food Composition View Controller-->
         <scene sceneID="iUU-OX-Nzs">

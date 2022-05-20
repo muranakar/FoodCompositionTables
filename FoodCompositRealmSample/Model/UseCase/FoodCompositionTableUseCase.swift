@@ -7,10 +7,12 @@
 
 import Foundation
 
+
+
 class FoodCompositionTableUseCase {
     
     let repository = FoodTabelRepositoryImpr()
-    
+        
     var foodTable: [FoodObject] {
         repository.loadFoodTable()
     }

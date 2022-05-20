@@ -122,6 +122,8 @@
 			children = (
 				18C04A1227FDE88800164DD8 /* SelectFoodsTableUseCase.swift */,
 				1889C319280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift */,
+				1887DC3A281DC0F000EEBBB3 /* CompositionType.swift */,
+				1887DC38281DC0AF00EEBBB3 /* CategoryType.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -149,8 +151,6 @@
 			children = (
 				1889C31C280FFED900BEFD6D /* SelectFoodObject.swift */,
 				18C04A1E2801C76B00164DD8 /* FoodObject.swift */,
-				1887DC38281DC0AF00EEBBB3 /* CategoryType.swift */,
-				1887DC3A281DC0F000EEBBB3 /* CompositionType.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";

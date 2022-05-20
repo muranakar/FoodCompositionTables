@@ -92,6 +92,25 @@ class SelectFoodsTableUseCase {
     func save(selectFood: SelectFoodObject) {
         repository.save(selectFood: selectFood)
     }
+    
+    func valueString(in compositionType: CompositionType) -> String {
+        
+        let valueString:String
+        switch compositionType {
+        case .energy: valueString = String(self.totalEnergy) + " kcal"
+        case .water: valueString = String(self.totalWater) + " g"
+        case .protein: valueString = String(self.totalProtein) + " g"
+        case .fat: valueString = String(self.totalFat) + " g"
+        case .dietaryfiber: valueString = String(self.totalDietaryFiber) + " g"
+        case .carbohydrate: valueString = String(self.totalCarbohydrate) + " g"
+        case .weight: valueString = String(self.totalWeight) + "g"
+        case .foodCode: return ""
+        case .foodName: return ""
+        case .category(_): return""
+        }
+
+        return valueString
+    }
 }
 
 extension Array where  Element == SelectFoodObject {
@@ -99,24 +118,3 @@ extension Array where  Element == SelectFoodObject {
 //
 //    }
 }
-
-//    func add(selectFood: SelectFoodObject,
-//             to foodList:[SelectFoodObject])  -> [SelectFoodObject] {
-//        var foodList = foodList
-//        foodList.append(selectFood)
-//        return foodList
-//    }
-//
-//    func delete(selectFood: SelectFoodObject,
-//                from foodList: [SelectFoodObject] ) -> [SelectFoodObject]{
-//        var foodList = foodList
-//        for i in 0...(foodList.count - 1) {
-//            if foodList[i].food.id == selectFood.food.id {
-//                foodList.remove(at: i)
-//                print(foodList)
-//                return foodList
-//            }
-//        }
-//        return foodList
-//    }
-

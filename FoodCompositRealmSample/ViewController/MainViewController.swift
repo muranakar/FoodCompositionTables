@@ -53,8 +53,8 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
         guard let resultVC = segue.destination as? ResultViewController else {
             return
         }
-        resultVC.selectFoodTableUseCase.selectedFoods
-        = self.selectFoodTableUseCase.selectedFoods
+        resultVC.selectFoodTableUseCase
+        = self.selectFoodTableUseCase
     }
     
     func transitPresentingVC(_: () -> Void) {

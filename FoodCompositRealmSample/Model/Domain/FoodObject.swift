@@ -7,8 +7,7 @@
 
 import Foundation
 
-//Compositionは今後も増える
-
+//食品のオブジェクト
 struct FoodObject: Equatable {
     
     var id: Int?
@@ -42,6 +41,7 @@ struct FoodObject: Equatable {
     }
 }
 
+//栄養の計算を扱うためのオブジェクト
 struct PFS { // Protein Fat Sugar
     var protein: Double
     var fat: Double
@@ -49,9 +49,7 @@ struct PFS { // Protein Fat Sugar
     
     //Enerygy関係はほとんど同様のプロパティがPFSとPFCと二箇所にあって良くない
     var energy: Double { // Atwater
-        (protein * 4)
-        + (fat * 9)
-        + (sugar * 4)
+        protein * 4 + fat * 9 + sugar * 4
     }
     
     var proteinPercentEnergy: Double {
