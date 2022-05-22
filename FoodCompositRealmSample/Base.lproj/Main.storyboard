@@ -332,6 +332,36 @@
             </objects>
             <point key="canvasLocation" x="-752.17391304347836" y="2.6785714285714284"/>
         </scene>
+        <!--Search Setting View Controller-->
+        <scene sceneID="MEH-9Z-fLn">
+            <objects>
+                <viewController storyboardIdentifier="SearchSettingViewController" id="ULl-Sq-uH0" customClass="SearchSettingViewController" customModule="FoodCompositionTables" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yfw-Mw-54E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wh8-Kx-hFw">
+                                <rect key="frame" x="10" y="74" width="394" height="758"/>
+                                <color key="backgroundColor" red="0.54285413029999996" green="0.69713205099999997" blue="0.74510657790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Dj3-er-dPr"/>
+                        <color key="backgroundColor" red="0.54114905940000002" green="0.69785960410000003" blue="0.74705829040000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="wh8-Kx-hFw" firstAttribute="centerX" secondItem="yfw-Mw-54E" secondAttribute="centerX" id="8ew-SW-GtG"/>
+                            <constraint firstItem="wh8-Kx-hFw" firstAttribute="leading" secondItem="Dj3-er-dPr" secondAttribute="leading" constant="10" id="DME-Tk-OPo"/>
+                            <constraint firstItem="Dj3-er-dPr" firstAttribute="trailing" secondItem="wh8-Kx-hFw" secondAttribute="trailing" constant="10" id="Gqn-D6-ez5"/>
+                            <constraint firstItem="Dj3-er-dPr" firstAttribute="bottom" secondItem="wh8-Kx-hFw" secondAttribute="bottom" constant="30" id="eOo-6n-2hz"/>
+                            <constraint firstItem="wh8-Kx-hFw" firstAttribute="top" secondItem="Dj3-er-dPr" secondAttribute="top" constant="30" id="jo0-9O-G26"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K6T-Sg-5bA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-752.17391304347836" y="697.76785714285711"/>
+        </scene>
         <!--Food Composition View Controller-->
         <scene sceneID="iUU-OX-Nzs">
             <objects>

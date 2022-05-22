@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		182596B927D8B12A00DFCD2A /* FoodTableRepositoryImpr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182596B827D8B12A00DFCD2A /* FoodTableRepositoryImpr.swift */; };
+		1844F5D1283ACEA900BCD2B4 /* SearchSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844F5D0283ACEA900BCD2B4 /* SearchSettingViewController.swift */; };
 		1887DC39281DC0AF00EEBBB3 /* FoodCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887DC38281DC0AF00EEBBB3 /* FoodCategoryType.swift */; };
 		1887DC3B281DC0F000EEBBB3 /* FoodCompositionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887DC3A281DC0F000EEBBB3 /* FoodCompositionType.swift */; };
 		1889C31A280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889C319280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift */; };
@@ -17,7 +18,6 @@
 		18B1FE6E27CC9E61001124FF /* FoodTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1FE6C27CC9E61001124FF /* FoodTableModel.swift */; };
 		18B389F627C91687009AAB65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B389F527C91687009AAB65 /* MainViewController.swift */; };
 		18B60481280CEBD900DA4A79 /* FoodCompositionTablesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60480280CEBD900DA4A79 /* FoodCompositionTablesTests.swift */; };
-		18B60488280CECC400DA4A79 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60487280CECC400DA4A79 /* Test.swift */; };
 		18C04A1327FDE88800164DD8 /* SelectFoodsTableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1227FDE88800164DD8 /* SelectFoodsTableUseCase.swift */; };
 		18C04A1D2801C5ED00164DD8 /* FoodCompositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1C2801C5ED00164DD8 /* FoodCompositionViewController.swift */; };
 		18C04A1F2801C76B00164DD8 /* FoodObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1E2801C76B00164DD8 /* FoodObject.swift */; };
@@ -43,6 +43,7 @@
 /* Begin PBXFileReference section */
 		0CE601F85450C45B1CA4B5C9 /* Pods_FoodCompositionTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodCompositionTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		182596B827D8B12A00DFCD2A /* FoodTableRepositoryImpr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableRepositoryImpr.swift; sourceTree = "<group>"; };
+		1844F5D0283ACEA900BCD2B4 /* SearchSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingViewController.swift; sourceTree = "<group>"; };
 		1887DC38281DC0AF00EEBBB3 /* FoodCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryType.swift; sourceTree = "<group>"; };
 		1887DC3A281DC0F000EEBBB3 /* FoodCompositionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCompositionType.swift; sourceTree = "<group>"; };
 		1889C319280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCompositionTableUseCase.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		18B60476280CEB7500DA4A79 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		18B6047E280CEBD900DA4A79 /* FoodCompositionTablesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodCompositionTablesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B60480280CEBD900DA4A79 /* FoodCompositionTablesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCompositionTablesTests.swift; sourceTree = "<group>"; };
-		18B60487280CECC400DA4A79 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		18C04A1227FDE88800164DD8 /* SelectFoodsTableUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFoodsTableUseCase.swift; sourceTree = "<group>"; };
 		18C04A1C2801C5ED00164DD8 /* FoodCompositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCompositionViewController.swift; sourceTree = "<group>"; };
 		18C04A1E2801C76B00164DD8 /* FoodObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodObject.swift; sourceTree = "<group>"; };
@@ -89,6 +89,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1844F5CD283A9D5F00BCD2B4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		184788DE27DB4D1F00E406F0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +103,7 @@
 				8A5D067C279F4876002D2276 /* FoodListViewController.swift */,
 				18C04A1C2801C5ED00164DD8 /* FoodCompositionViewController.swift */,
 				189E22AE28166E8600E723AC /* ResultViewController.swift */,
+				1844F5D0283ACEA900BCD2B4 /* SearchSettingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -180,6 +188,7 @@
 		8A5D0677279F4876002D2276 /* FoodCompositRealmSample */ = {
 			isa = PBXGroup;
 			children = (
+				1844F5CD283A9D5F00BCD2B4 /* View */,
 				184788DE27DB4D1F00E406F0 /* ViewController */,
 				184788DF27DB4D2E00E406F0 /* Model */,
 				8A5D0678279F4876002D2276 /* AppDelegate.swift */,
@@ -188,7 +197,6 @@
 				8A5D0681279F4881002D2276 /* Assets.xcassets */,
 				8A5D0683279F4881002D2276 /* LaunchScreen.storyboard */,
 				8A5D0686279F4881002D2276 /* Info.plist */,
-				18B60487280CECC400DA4A79 /* Test.swift */,
 			);
 			path = FoodCompositRealmSample;
 			sourceTree = "<group>";
@@ -359,11 +367,11 @@
 				8A5D067D279F4876002D2276 /* FoodListViewController.swift in Sources */,
 				1889C31A280F6D9A00BEFD6D /* FoodCompositionTableUseCase.swift in Sources */,
 				18C04A1327FDE88800164DD8 /* SelectFoodsTableUseCase.swift in Sources */,
+				1844F5D1283ACEA900BCD2B4 /* SearchSettingViewController.swift in Sources */,
 				18B389F627C91687009AAB65 /* MainViewController.swift in Sources */,
 				1889C31D280FFED900BEFD6D /* SelectFoodObject.swift in Sources */,
 				18C04A1D2801C5ED00164DD8 /* FoodCompositionViewController.swift in Sources */,
 				18C04A1F2801C76B00164DD8 /* FoodObject.swift in Sources */,
-				18B60488280CECC400DA4A79 /* Test.swift in Sources */,
 				189E22AF28166E8600E723AC /* ResultViewController.swift in Sources */,
 				8A5D0679279F4876002D2276 /* AppDelegate.swift in Sources */,
 				182596B927D8B12A00DFCD2A /* FoodTableRepositoryImpr.swift in Sources */,

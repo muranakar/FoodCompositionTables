@@ -23,7 +23,10 @@ struct FoodObject: Equatable {
     var sugar: Double
     
     var defaultWeight: Double = 100
-    
+}
+
+//MARK: イニシャライズを拡張することでクラスのメンバワイズイニシャライザが潰されない　＝　メンバワイズが使える
+extension FoodObject {
     init(food: FoodComposition) {
         id = food.id
         foodCode = food.food_code ?? 0
