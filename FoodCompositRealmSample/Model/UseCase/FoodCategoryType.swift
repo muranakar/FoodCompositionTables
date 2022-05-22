@@ -9,6 +9,7 @@ import Foundation
 
 enum FoodCategoryType:Int, CaseIterable {
     
+    // TODO: 日本語の名称で穀類を英語表記にするのは辛いものの、日本語名称のままでも難しいかと考えてとりあえずの表記
     case koku = 0
     case imo
     case satou
@@ -52,17 +53,3 @@ enum FoodCategoryType:Int, CaseIterable {
     }
 }
 
-enum KetogenicIndexType: Int, CaseIterable {
-    
-    case ketogenicRatio
-    case ketogenicIndex
-    case ketogenicValue
-    
-    var name: String {
-        switch self {
-        case .ketogenicRatio: return "ケトン比"
-        case .ketogenicIndex: return "ケトン指数"
-        case .ketogenicValue: return "ケトン値"
-        }
-    }
-}

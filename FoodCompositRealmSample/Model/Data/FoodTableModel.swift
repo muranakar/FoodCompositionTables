@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+//TODO: データの元となっているRealmファイルが新しく作り直せないでいるため、Realmから取ってくるオブジェクトの名称を変えたくても今は変えられていません
 
 //Entity
 class FoodComposition: Object {

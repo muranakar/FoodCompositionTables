@@ -12,6 +12,7 @@ protocol FoodListViewTransitonDelegate: AnyObject {
 }
 
 //ValueObject
+// TODO: よくない使い方していないか？
 struct Section {
     let number: Int
     //IndexPath型を渡した場合
@@ -24,6 +25,7 @@ struct Section {
     }
 }
 
+// TODO: リストを表示する際に読み込みが遅れるのを直したい
 class FoodListViewController: UIViewController,FoodRegistrationDelegate {
     
     weak var delegate: FoodListViewTransitonDelegate?
@@ -34,6 +36,7 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
     
     @IBOutlet private weak var foodSearchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var searchSettingButton: UIButton!
     
     //検索時のTableViewを覆い隠す用
     @IBOutlet private weak var coverView: UIView!
@@ -67,6 +70,13 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
         foodSearchBar.showsSearchResultsButton = true
     }
     
+    private func setSearchRules() {
+        searchSettingButton.layer.borderWidth = 1
+        searchSettingButton.layer.borderColor = UIColor.white.cgColor
+        searchSettingButton.layer.shadowColor = UIColor.black.cgColor
+        searchSettingButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+    }
+    
     func transitPresentingVC() {
         delegate?.transitPresentingVC {
             print(String(describing: delegate?.transitPresentingVC))
@@ -84,11 +94,10 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
             }
             return filterdFoods
         }
-        //かからなければ空の配列を返す
+        //filterにかからなければ空の配列
         return []
     }
     
-    //indexPath.rowとsectionの使い分けが同じ中に入っているのが問題
     func searchedResultFoods(between section: Section) -> [FoodObject] {
         
         let resultedFoods: [FoodObject]
@@ -128,7 +137,6 @@ extension FoodListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { fatalError() }
-        //ここはindex.sectionにしなければいけないのが分かりづらい
         let searchedResultFoods = searchedResultFoods(between: Section(at: indexPath))
         let foodName = searchedResultFoods[indexPath.row].foodName
         

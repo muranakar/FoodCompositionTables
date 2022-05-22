@@ -35,8 +35,8 @@ struct FoodObject: Equatable {
         dietaryfiber = food.dietaryfiber ?? 0
         carbohydrate = food.carbohydrate ?? 0
         category = food.category ?? ""
+        // Sugarの扱い方の検討
 //        sugar = food.sugar ?? 0
-        //TODO: sugarの扱いの検討
         sugar = carbohydrate - dietaryfiber
     }
 }
@@ -71,14 +71,14 @@ struct PFS { // Protein Fat Sugar
         return roundedIndex
     }
     
-    //Tableからのイニシャライズ
+    //Repositoryからのイニシャライズ
     init(food: FoodObject){
         protein = food.protein
         fat = food.fat
         sugar = food.sugar
     }
     
-    //UIからのイニシャライズ
+    //任意の値でのイニシャライズ
     init(protein: Double, fat: Double, sugar: Double) {
         self.protein = protein
         self.fat = fat
@@ -138,7 +138,7 @@ struct PFC { // Protein Fat Carbohydrate
         carbohydrate = food.carbohydrate
     }
     
-    //任意でのイニシャライズ
+    //任意の値でのイニシャライズ
     init(protein: Double, fat: Double, carbohydrate: Double) {
         self.protein = protein
         self.fat = fat

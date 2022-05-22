@@ -9,11 +9,14 @@ import UIKit
 import Charts
 
 final class ResultViewController: UIViewController {
-    //これモデル側に寄せられる？
-    var selectFoodTableUseCase = SelectFoodsTableUseCase()
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var pieChartsView: PieChartView!
 
+    var selectFoodTableUseCase = SelectFoodsTableUseCase()
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var pieChartsView: PieChartView!
+    @IBOutlet private weak var ketogenicTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var ketogenicTypeLabel: UILabel!
+    @IBOutlet private weak var ketogenicTypeValueLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self,
@@ -22,12 +25,36 @@ final class ResultViewController: UIViewController {
         tableView.dataSource = self
         
         pieChartsView.centerText = "PFC balance"
+        
+        ketogenicTypeSegmentedControl
+            .addTarget(self,
+                       action: #selector(ketogenicTypeSegementedControlValueChanged),
+                       for: .valueChanged)
         reloadPFCPieChart()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         reloadPFCPieChart()
         tableView.reloadData()
+    }
+    
+    @objc func ketogenicTypeSegementedControlValueChanged() {
+        // TODO: KetogenicIndexTypeとSegementedControlがIntで繋がれているのが暗黙の了解になってしまっている
+        guard let ketogenicIndexType
+                = KetogenicIndexType(
+                    rawValue:
+                        ketogenicTypeSegmentedControl
+                        .selectedSegmentIndex) else {
+                            return
+                        }
+        
+        let result: Double
+        = selectFoodTableUseCase
+            .calculateKetogenicTypeValue(
+                in: ketogenicIndexType) ?? .nan
+        
+        self.ketogenicTypeLabel.text = ketogenicIndexType.name
+        self.ketogenicTypeValueLabel.text = String(format: "%.1f", result)
     }
 
     func reloadPFCPieChart() {
@@ -53,7 +80,7 @@ final class ResultViewController: UIViewController {
             .setValueFormatter(DefaultValueFormatter(formatter: formatter))
         pieChartsView
             .usePercentValuesEnabled = true
-//        view.addSubview(self.pieChartsView)
+
         dataSet = PieChartDataSet(entries: pieChartsDataEnry, label: "PFCバランス")
         dataSet.colors = ChartColorTemplates.liberty()
         dataSet.valueTextColor = UIColor.black
@@ -65,13 +92,13 @@ final class ResultViewController: UIViewController {
 extension ResultViewController: UITableViewDelegate,UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FoodCompositionType.resultCases.count
+        return FoodCompositionType.searchCases.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell") else { fatalError() }
         //栄養素名称
-        let compositionType = FoodCompositionType.resultCases[indexPath.row]
+        let compositionType = FoodCompositionType.searchCases[indexPath.row]
         let compositionName = compositionType.nameString
         //栄養素量
         let compositionValue = selectFoodTableUseCase.getCompositionValueString(of: compositionType)

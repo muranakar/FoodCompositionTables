@@ -7,6 +7,21 @@
 
 import Foundation
 
+enum KetogenicIndexType: Int, CaseIterable {
+    case ketogenicRatio = 0
+    case ketogenicIndex
+    case ketogenicValue
+    
+    var name: String {
+        switch self {
+        case .ketogenicRatio: return "ケトン比"
+        case .ketogenicIndex: return "ケトン指数"
+        case .ketogenicValue: return "ケトン値"
+        }
+    }
+}
+
+
 class SelectFoodsTableUseCase {
     
     let repository = FoodTabelRepositoryImpr()
@@ -17,6 +32,7 @@ class SelectFoodsTableUseCase {
         selectedFoods.count
     }
     
+    // TODO: 計算量がコンピューテッドプロパティには適していない？関数にするべき？
     var totalEnergy: Int {
         selectedFoods.reduce(0) { totalEnergy, selectfood in
             let energy = Double(selectfood.food.energy) * (selectfood.weight / 100)
@@ -67,8 +83,26 @@ class SelectFoodsTableUseCase {
     }
     
     init() {
-        //TODO:インスタンス生成時にうまくハマるかどうか
         loadSelectFoods()
+    }
+    
+    func calculateKetogenicTypeValue(in ketogenicType: KetogenicIndexType) -> Double? {
+        let protein = totalProtein
+        let fat = totalFat
+        let carbohydrate = totalCarbohydrate
+        
+        switch ketogenicType {
+        case .ketogenicRatio:
+            let pfc = PFC(protein: protein, fat: fat, carbohydrate: carbohydrate)
+            return pfc.ketogenicRatio
+        case .ketogenicIndex:
+            let pfc = PFC(protein: protein, fat: fat, carbohydrate: carbohydrate)
+            return pfc.ketogenicIndex
+        case .ketogenicValue:
+            let sugar = totalCarbohydrate - totalDietaryFiber
+            let pfs = PFS(protein: protein, fat: fat, sugar: sugar)
+            return pfs.ketogenicValue
+        }
     }
     
     func add(selectFood: SelectFoodObject) {

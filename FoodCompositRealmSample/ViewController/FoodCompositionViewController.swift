@@ -14,7 +14,6 @@ final class FoodCompositionViewController: UIViewController, UITableViewDelegate
     
     weak var delegate: FoodRegistrationDelegate?
 
-    //prepareで分ける
     var selectFood: FoodObject?
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var registerFoodButton: UIButton!
@@ -68,7 +67,7 @@ final class FoodCompositionViewController: UIViewController, UITableViewDelegate
         let composition = FoodCompositionType.allCases[indexPath.row]
         let compositionName = composition.nameString
         //栄養素量
-        let compositionValueString = composition.valueString(in: selectFood)
+        let compositionValueString = composition.getCompositionValueString(in: selectFood)
 
         var content = UIListContentConfiguration.valueCell()
         content.text = compositionName

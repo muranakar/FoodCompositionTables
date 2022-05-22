@@ -8,7 +8,7 @@
 import Foundation
 
 enum FoodCompositionType: Equatable {
-    //UseCaseかな、そのために利用しているようなところが
+ 
     case foodCode
     case foodName
     case water(min:Double?,max:Double?)
@@ -20,6 +20,7 @@ enum FoodCompositionType: Equatable {
     case category(FoodCategoryType)
     case weight(min:Double?,max:Double?)
     
+    //名称
     var nameString: String {
         switch self {
         case .foodCode: return "食品番号"
@@ -35,7 +36,8 @@ enum FoodCompositionType: Equatable {
         }
     }
     
-    //CaseIterableを準拠できないのでプロパティとして書き起こす
+    // MARK: caseが追加された場合には追記必要
+    //連想型によりCaseIterableを準拠できないため自作のプロパティ
     static var allCases: [FoodCompositionType] {
         return [
             .foodCode,
@@ -51,8 +53,8 @@ enum FoodCompositionType: Equatable {
         ]
     }
     
-    //アプリケーションの事情に合わせているプロパティ
-    static var resultCases: [FoodCompositionType] {
+    //検索のためのプロパティ
+    static var searchCases: [FoodCompositionType] {
         return [
             .water(min: nil, max: nil),
             .energy(min: nil, max: nil),
@@ -65,7 +67,7 @@ enum FoodCompositionType: Equatable {
     }
     
     //View側の事情？
-    func valueString(in selectFood:FoodObject) -> String {
+    func getCompositionValueString(in selectFood:FoodObject) -> String {
         let valueString:String
         
         switch self {

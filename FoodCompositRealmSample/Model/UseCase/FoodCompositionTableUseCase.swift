@@ -18,6 +18,9 @@ class FoodCompositionTableUseCase {
     }
 }
 
+// TODO: filterであるので関数型のように使えるといい
+// ただcaseで連想型利用している場合がほとんどで、ぱっと見わかりづらい
+
 extension Array where Element == FoodObject {
     
     func filter(by composition: FoodCompositionType) -> [FoodObject] {

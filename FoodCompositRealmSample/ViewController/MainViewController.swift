@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
-    // TODO: repositoryからのデータをUseCaseに取り込めるようにする必要がある
     let selectFoodTableUseCase = SelectFoodsTableUseCase()
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var registFoodButton: UIButton!
@@ -31,10 +30,6 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     private func setup() {
         registFoodButton.layer.cornerRadius = registFoodButton.frame.height / 2
         displayResultButton.layer.cornerRadius = displayResultButton.frame.height / 2
-    }
-    
-    private func configure() {
-        refleshCompositionValue()
     }
     
     private func refleshCompositionValue() {
@@ -79,6 +74,7 @@ extension MainViewController: UITableViewDelegate {
 }
 
 extension MainViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         selectFoodTableUseCase.selectedFoodsCount
     }
