@@ -51,6 +51,12 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
         //        setupSearchBar()
         configure()
         configureSearchBar()
+        
+        searchSettingButton
+            .addTarget(
+                self,
+                action: #selector(searchSettingButtonTapped),
+                for: .touchUpInside)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,6 +81,26 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
         searchSettingButton.layer.borderColor = UIColor.white.cgColor
         searchSettingButton.layer.shadowColor = UIColor.black.cgColor
         searchSettingButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+    }
+    
+    @objc func searchSettingButtonTapped() {
+        guard let searchSettingVC =
+                storyboard?
+                .instantiateViewController(
+                    withIdentifier:
+                        "SearchSettingViewController") else { return }
+        
+        if #available(iOS 15.0, *) {
+            if let sheet = searchSettingVC.sheetPresentationController {
+                sheet.detents = [
+                    .medium(),
+                    .large()
+                ]
+            }
+            present(searchSettingVC, animated: true)
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     func transitPresentingVC() {
