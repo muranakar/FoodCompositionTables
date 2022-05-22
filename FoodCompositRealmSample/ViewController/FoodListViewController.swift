@@ -48,7 +48,7 @@ class FoodListViewController: UIViewController,FoodRegistrationDelegate {
                            forCellReuseIdentifier: "Cell")
         tableView.delegate = self
         tableView.dataSource = self
-//        setupSearchBar()
+        //        setupSearchBar()
         configure()
         configureSearchBar()
     }
@@ -127,7 +127,7 @@ extension FoodListViewController: UITableViewDelegate, UITableViewDataSource {
         //CategoryTypeによるsectionの区別
         return FoodCategoryType.allCases[section].name
     }
-
+    
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let searchedResultFoods = searchedResultFoods(between: Section(section))
