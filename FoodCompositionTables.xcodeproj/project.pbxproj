@@ -21,7 +21,7 @@
 		18C04A1327FDE88800164DD8 /* SelectFoodsTableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1227FDE88800164DD8 /* SelectFoodsTableUseCase.swift */; };
 		18C04A1D2801C5ED00164DD8 /* FoodCompositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1C2801C5ED00164DD8 /* FoodCompositionViewController.swift */; };
 		18C04A1F2801C76B00164DD8 /* FoodObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04A1E2801C76B00164DD8 /* FoodObject.swift */; };
-		77B9C1540BFAD78B7DE7700A /* Pods_FoodCompositionTables.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CE601F85450C45B1CA4B5C9 /* Pods_FoodCompositionTables.framework */; };
+		65A6D7C943C1FE607AE87E8D /* Pods_FoodCompositionTables.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673540575F8EC28C82071802 /* Pods_FoodCompositionTables.framework */; };
 		8A5D0679279F4876002D2276 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D0678279F4876002D2276 /* AppDelegate.swift */; };
 		8A5D067B279F4876002D2276 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D067A279F4876002D2276 /* SceneDelegate.swift */; };
 		8A5D067D279F4876002D2276 /* FoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D067C279F4876002D2276 /* FoodListViewController.swift */; };
@@ -41,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0CE601F85450C45B1CA4B5C9 /* Pods_FoodCompositionTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodCompositionTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		182596B827D8B12A00DFCD2A /* FoodTableRepositoryImpr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableRepositoryImpr.swift; sourceTree = "<group>"; };
 		1844F5D0283ACEA900BCD2B4 /* SearchSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingViewController.swift; sourceTree = "<group>"; };
 		1887DC38281DC0AF00EEBBB3 /* FoodCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryType.swift; sourceTree = "<group>"; };
@@ -58,6 +57,9 @@
 		18C04A1227FDE88800164DD8 /* SelectFoodsTableUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFoodsTableUseCase.swift; sourceTree = "<group>"; };
 		18C04A1C2801C5ED00164DD8 /* FoodCompositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCompositionViewController.swift; sourceTree = "<group>"; };
 		18C04A1E2801C76B00164DD8 /* FoodObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodObject.swift; sourceTree = "<group>"; };
+		6016A7633138B15C1FEAA74F /* Pods-FoodCompositionTables.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCompositionTables.debug.xcconfig"; path = "Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables.debug.xcconfig"; sourceTree = "<group>"; };
+		673540575F8EC28C82071802 /* Pods_FoodCompositionTables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodCompositionTables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7389B268017434E4F6FC7C63 /* Pods-FoodCompositionTables.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCompositionTables.release.xcconfig"; path = "Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables.release.xcconfig"; sourceTree = "<group>"; };
 		8A5D0675279F4876002D2276 /* FoodCompositionTables.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodCompositionTables.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5D0678279F4876002D2276 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5D067A279F4876002D2276 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,8 +68,6 @@
 		8A5D0681279F4881002D2276 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A5D0684279F4881002D2276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A5D0686279F4881002D2276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B8F92A8CFAD9243207DFA07 /* Pods-FoodCompositionTables.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCompositionTables.release.xcconfig"; path = "Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables.release.xcconfig"; sourceTree = "<group>"; };
-		E8B1C5C5E19F78F70B6CFC96 /* Pods-FoodCompositionTables.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCompositionTables.debug.xcconfig"; path = "Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,20 +82,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77B9C1540BFAD78B7DE7700A /* Pods_FoodCompositionTables.framework in Frameworks */,
+				65A6D7C943C1FE607AE87E8D /* Pods_FoodCompositionTables.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1844F5CD283A9D5F00BCD2B4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		184788DE27DB4D1F00E406F0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				18B60476280CEB7500DA4A79 /* XCTest.framework */,
-				0CE601F85450C45B1CA4B5C9 /* Pods_FoodCompositionTables.framework */,
+				673540575F8EC28C82071802 /* Pods_FoodCompositionTables.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -188,7 +181,6 @@
 		8A5D0677279F4876002D2276 /* FoodCompositRealmSample */ = {
 			isa = PBXGroup;
 			children = (
-				1844F5CD283A9D5F00BCD2B4 /* View */,
 				184788DE27DB4D1F00E406F0 /* ViewController */,
 				184788DF27DB4D2E00E406F0 /* Model */,
 				8A5D0678279F4876002D2276 /* AppDelegate.swift */,
@@ -204,8 +196,8 @@
 		B97A1FE91F25B963566031E3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E8B1C5C5E19F78F70B6CFC96 /* Pods-FoodCompositionTables.debug.xcconfig */,
-				8B8F92A8CFAD9243207DFA07 /* Pods-FoodCompositionTables.release.xcconfig */,
+				6016A7633138B15C1FEAA74F /* Pods-FoodCompositionTables.debug.xcconfig */,
+				7389B268017434E4F6FC7C63 /* Pods-FoodCompositionTables.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -235,11 +227,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A5D0689279F4881002D2276 /* Build configuration list for PBXNativeTarget "FoodCompositionTables" */;
 			buildPhases = (
-				BD1E8888B323C6B3C5A5DAC1 /* [CP] Check Pods Manifest.lock */,
+				721DD0EEDA07FD1E65309D5C /* [CP] Check Pods Manifest.lock */,
 				8A5D0671279F4876002D2276 /* Sources */,
 				8A5D0672279F4876002D2276 /* Frameworks */,
 				8A5D0673279F4876002D2276 /* Resources */,
-				62485D3B7DB1004948FDB0A8 /* [CP] Embed Pods Frameworks */,
+				0B422B7AC159DEC2FE9269E1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -309,7 +301,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		62485D3B7DB1004948FDB0A8 /* [CP] Embed Pods Frameworks */ = {
+		0B422B7AC159DEC2FE9269E1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -326,7 +318,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodCompositionTables/Pods-FoodCompositionTables-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BD1E8888B323C6B3C5A5DAC1 /* [CP] Check Pods Manifest.lock */ = {
+		721DD0EEDA07FD1E65309D5C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -567,7 +559,7 @@
 		};
 		8A5D068A279F4881002D2276 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8B1C5C5E19F78F70B6CFC96 /* Pods-FoodCompositionTables.debug.xcconfig */;
+			baseConfigurationReference = 6016A7633138B15C1FEAA74F /* Pods-FoodCompositionTables.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -586,7 +578,7 @@
 		};
 		8A5D068B279F4881002D2276 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B8F92A8CFAD9243207DFA07 /* Pods-FoodCompositionTables.release.xcconfig */;
+			baseConfigurationReference = 7389B268017434E4F6FC7C63 /* Pods-FoodCompositionTables.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
