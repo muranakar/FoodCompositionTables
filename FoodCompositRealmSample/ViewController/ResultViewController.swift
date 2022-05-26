@@ -1,15 +1,14 @@
-////
-////  ResultViewController.swift
-////  FoodCompositionTables
-////
-////  Created by 山田　天星 on 2022/04/25.
-////
+//
+//  ResultViewController.swift
+//  FoodCompositionTables
+//
+//  Created by 山田　天星 on 2022/04/25.
+//
 
 import UIKit
 import Charts
 
 final class ResultViewController: UIViewController {
-
     var selectFoodTableUseCase = SelectFoodsTableUseCase()
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var pieChartsView: PieChartView!
@@ -42,11 +41,10 @@ final class ResultViewController: UIViewController {
         // TODO: KetogenicIndexTypeとSegementedControlがIntで繋がれているのが暗黙の了解になってしまっている
         guard let ketogenicIndexType
                 = KetogenicIndexType(
-                    rawValue:
-                        ketogenicTypeSegmentedControl
-                        .selectedSegmentIndex) else {
-                            return
-                        }
+                    rawValue: ketogenicTypeSegmentedControl.selectedSegmentIndex
+                ) else {
+                return
+                }
         
         let result: Double
         = selectFoodTableUseCase
@@ -89,18 +87,17 @@ final class ResultViewController: UIViewController {
     }
 }
 
-extension ResultViewController: UITableViewDelegate,UITableViewDataSource {
-
+extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return FoodCompositionType.searchCases.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell") else { fatalError() }
-        //栄養素名称
+        // 栄養素名称
         let compositionType = FoodCompositionType.searchCases[indexPath.row]
         let compositionName = compositionType.nameString
-        //栄養素量
+        // 栄養素量
         let compositionValue = selectFoodTableUseCase.getCompositionValueString(of: compositionType)
 
         var content = UIListContentConfiguration.valueCell()

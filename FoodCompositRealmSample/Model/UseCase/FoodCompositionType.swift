@@ -7,20 +7,18 @@
 
 import Foundation
 
-enum FoodCompositionType: Equatable {
- 
+enum FoodCompositionType: Equatable, CaseIterable {
     case foodCode
     case foodName
-    case water(min:Double?,max:Double?)
-    case energy(min:Int?,max:Int?)
-    case protein(min:Double?,max:Double?)
-    case fat(min:Double?,max:Double?)
-    case dietaryfiber(min:Double?,max:Double?)
-    case carbohydrate(min:Double?,max:Double?)
+    case water(min: Double?, max: Double?)
+    case energy(min: Int?, max: Int?)
+    case protein(min: Double?, max: Double?)
+    case fat(min: Double?, max: Double?)
+    case dietaryfiber(min: Double?, max: Double?)
+    case carbohydrate(min: Double?, max: Double?)
     case category(FoodCategoryType)
-    case weight(min:Double?,max:Double?)
-    
-    //名称
+    case weight(min: Double?, max: Double?)
+    // 名称
     var nameString: String {
         switch self {
         case .foodCode: return "食品番号"
@@ -35,9 +33,8 @@ enum FoodCompositionType: Equatable {
         case .weight: return "重量"
         }
     }
-    
-    // MARK: caseが追加された場合には追記必要
-    //連想型によりCaseIterableを準拠できないため自作のプロパティ
+    // TODO: caseが追加された場合には追記必要
+    // 連想型によりCaseIterableを準拠できないため自作のプロパティ
     static var allCases: [FoodCompositionType] {
         return [
             .foodCode,
@@ -53,7 +50,7 @@ enum FoodCompositionType: Equatable {
         ]
     }
     
-    //検索のためのプロパティ
+    // 検索のためのプロパティ
     static var searchCases: [FoodCompositionType] {
         return [
             .water(min: nil, max: nil),
@@ -66,23 +63,43 @@ enum FoodCompositionType: Equatable {
         ]
     }
     
-    //View側の事情？
-    func getCompositionValueString(in selectFood:FoodObject) -> String {
-        let valueString:String
-        
+    // TODO: View側の事情？
+    func getCompositionValueString(in selectFood: FoodObject) -> String {
+        let valueString: String
         switch self {
-        case .foodCode: valueString = String(selectFood.foodCode )
-        case .foodName: valueString = selectFood.foodName
-        case .energy: valueString = String(selectFood.energy) + " g"
-        case .water: valueString = String(selectFood.water) + " g"
-        case .protein: valueString = String(selectFood.protein) + " g"
-        case .fat: valueString = String(selectFood.fat) + " g"
-        case .dietaryfiber: valueString = String(selectFood.dietaryfiber) + " g"
-        case .carbohydrate: valueString = String(selectFood.carbohydrate) + " g"
-        case .category: valueString = selectFood.category
-        case .weight: valueString = "100gあたり"
+        case .foodCode, .foodName, .category:
+            valueString = convettToFoodObjectRelationValue(foodObject: selectFood)
+        case .energy, .water, .protein, .fat, .dietaryfiber, .carbohydrate:
+            valueString = convettToFoodObjectRelationValue(foodObject: selectFood) + " g"
+        case .weight:
+            valueString = "100gあたり"
         }
-
         return valueString
+    }
+
+    func convettToFoodObjectRelationValue(foodObject: FoodObject) -> String {
+        switch self {
+        case .foodCode:
+            return "\(String(foodObject.foodCode))"
+        case .foodName:
+            return "\(String(foodObject.foodName))"
+        case .water:
+            return "\(String(foodObject.water))"
+        case .energy:
+            return  "\(String(foodObject.energy))"
+        case .protein:
+            return "\(String(foodObject.protein))"
+        case .fat:
+            return "\(String(foodObject.fat))"
+        case .dietaryfiber:
+            return "\(String(foodObject.dietaryfiber))"
+        case .carbohydrate:
+            return "\(String(foodObject.carbohydrate))"
+        case .category:
+            return "\(String(foodObject.category))"
+        case .weight:
+            return "\(String(foodObject.defaultWeight))"
+            // fatalError("\(#function):weightの数値は使用しない。")
+        }
     }
 }

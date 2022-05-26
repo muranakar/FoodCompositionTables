@@ -15,24 +15,20 @@ protocol FoodTableRepository {
     func loadFoodTable() -> [FoodObject]
 }
 
-final class FoodTabelRepositoryImpr: FoodTableRepository {    
-        
+final class FoodTabelRepositoryImpr: FoodTableRepository {
     private var realm: Realm
-    
     init() {
         self.realm = try! Realm()
     }
-    
     func initializeRealm() {
         print("initialize .realm")
         deleteRealm()
-        
         guard let defaultFileURL =  Realm.Configuration.defaultConfiguration.fileURL,
               let initialFileURL =  Bundle.main.url(forResource: "initial",
                                                     withExtension: "realm") else {
                   return print("FileURLが見つかりません")
               }
-        
+    
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: defaultFileURL.path) {
             try! fileManager.copyItem(at: initialFileURL,
@@ -54,7 +50,7 @@ final class FoodTabelRepositoryImpr: FoodTableRepository {
         }
     }
     
-    //Adapter?
+    // Adapter?
     func convert(selectFoodObject: SelectFoodObject) -> SelectFood {
         let selectFoodId = selectFoodObject.food.id
         let foodObject
@@ -62,7 +58,7 @@ final class FoodTabelRepositoryImpr: FoodTableRepository {
             .objects(FoodComposition.self)
             .first { $0.id == selectFoodId }
         let weight = selectFoodObject.weight
-        
+
         let selectFood = SelectFood.init()
         selectFood.foodObject = foodObject
         selectFood.foodWeight = weight
@@ -78,10 +74,8 @@ final class FoodTabelRepositoryImpr: FoodTableRepository {
         
         return selectfood
     }
-    
-    
-    
-    //TODO: FoodCompositionはできるけどWeightが入らない
+
+    // TODO: FoodCompositionはできるけどWeightが入らない
     func save(selectFood: SelectFoodObject) {
         let selectFood = convert(selectFoodObject: selectFood)
         
@@ -101,7 +95,7 @@ final class FoodTabelRepositoryImpr: FoodTableRepository {
             .sorted(byKeyPath: "objectId",
                     ascending: true)
         
-        let selectFoods:[SelectFoodObject] = Array(selectFoodsResults).compactMap {
+        let selectFoods: [SelectFoodObject] = Array(selectFoodsResults).compactMap {
             guard let food = $0.foodObject else { return nil }
             let selectfood = FoodObject(food: food)
             return SelectFoodObject(food: selectfood, weight: $0.foodWeight)
@@ -131,5 +125,4 @@ final class FoodTabelRepositoryImpr: FoodTableRepository {
             print("error")
         }
     }
-
 }

@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
+final class MainViewController: UIViewController, FoodListViewTransitonDelegate {
     let selectFoodTableUseCase = SelectFoodsTableUseCase()
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var registFoodButton: UIButton!
-    @IBOutlet weak var displayResultButton: UIButton!
+    @IBOutlet private weak var displayResultButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +37,12 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
     }
     
     @objc private func addFoodTouchUpInside() {
-        guard let navigationController = storyboard?.instantiateViewController(withIdentifier: "NavigationController") as? UINavigationController else { return }
-        guard let foodListViewController = navigationController.viewControllers[0] as? FoodListViewController else { return }
+        guard let navigationController =
+                storyboard?.instantiateViewController(
+                    withIdentifier: "NavigationController"
+                ) as? UINavigationController else { return }
+        guard let foodListViewController =
+                navigationController.viewControllers[0] as? FoodListViewController else { return }
         
         foodListViewController.delegate = self
         self.present(navigationController, animated: true, completion: nil)
@@ -59,12 +63,15 @@ final class MainViewController: UIViewController,FoodListViewTransitonDelegate {
 }
 
 extension MainViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //FoodCompositionViewContollerへ遷移
+        // FoodCompositionViewContollerへ遷移
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
         let selectFood = selectFoodTableUseCase.selectedFoods[indexPath.row]
         selectFoodTableUseCase.delete(selectFood: selectFood)
         tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -74,7 +81,6 @@ extension MainViewController: UITableViewDelegate {
 }
 
 extension MainViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         selectFoodTableUseCase.selectedFoodsCount
     }

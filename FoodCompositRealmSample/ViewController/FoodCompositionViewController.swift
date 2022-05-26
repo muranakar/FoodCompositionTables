@@ -11,7 +11,6 @@ protocol FoodRegistrationDelegate: AnyObject {
 }
 
 final class FoodCompositionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     weak var delegate: FoodRegistrationDelegate?
 
     var selectFood: FoodObject?
@@ -32,6 +31,7 @@ final class FoodCompositionViewController: UIViewController, UITableViewDelegate
             .addTarget(self,
                        action: #selector(registerFoodTouchUpInside),
                        for: .touchUpInside)
+        print(FoodCompositionType.allCases)
     }
     
     private func setup() {
@@ -54,8 +54,7 @@ final class FoodCompositionViewController: UIViewController, UITableViewDelegate
         SelectFoodsTableUseCase().save(selectFood: selectFoodObject)
         delegate?.transitPresentingVC()
     }
-    
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         FoodCompositionType.allCases.count
     }
@@ -63,10 +62,10 @@ final class FoodCompositionViewController: UIViewController, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CompositionCell") else { fatalError() }
         guard let selectFood = selectFood else { return cell }
-        //栄養素名称
+        // 栄養素名称
         let composition = FoodCompositionType.allCases[indexPath.row]
         let compositionName = composition.nameString
-        //栄養素量
+        // 栄養素量
         let compositionValueString = composition.getCompositionValueString(in: selectFood)
 
         var content = UIListContentConfiguration.valueCell()
@@ -76,5 +75,3 @@ final class FoodCompositionViewController: UIViewController, UITableViewDelegate
         return cell
     }
 }
-
-

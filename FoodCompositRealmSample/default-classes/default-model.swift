@@ -23,4 +23,3 @@ class SelectFood: Object {
         return "id"
     }
 }
-

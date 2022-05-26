@@ -7,8 +7,7 @@
 
 import Foundation
 
-enum FoodCategoryType:Int, CaseIterable {
-    
+enum FoodCategoryType: Int, CaseIterable {
     // TODO: 日本語の名称で穀類を英語表記にするのは辛いものの、日本語名称のままでも難しいかと考えてとりあえずの表記
     case koku = 0
     case imo
@@ -28,7 +27,6 @@ enum FoodCategoryType:Int, CaseIterable {
     case sikouinryou
     case tyoumiryou
     case tyourizumi
-    
     var name: String {
         switch self {
         case .koku: return "１ 穀類"
@@ -52,4 +50,3 @@ enum FoodCategoryType:Int, CaseIterable {
         }
     }
 }
-

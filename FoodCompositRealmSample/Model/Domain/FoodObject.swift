@@ -7,9 +7,8 @@
 
 import Foundation
 
-//食品のオブジェクト
+// 食品のオブジェクト
 struct FoodObject: Equatable {
-    
     var id: Int?
     var foodCode: Int
     var foodName: String
@@ -25,7 +24,7 @@ struct FoodObject: Equatable {
     var defaultWeight: Double = 100
 }
 
-//MARK: イニシャライズを拡張することでクラスのメンバワイズイニシャライザが潰されない　＝　メンバワイズが使える
+// MARK: イニシャライズを拡張することでクラスのメンバワイズイニシャライザが潰されない　＝　メンバワイズが使える
 extension FoodObject {
     init(food: FoodComposition) {
         id = food.id
@@ -39,18 +38,18 @@ extension FoodObject {
         carbohydrate = food.carbohydrate ?? 0
         category = food.category ?? ""
         // Sugarの扱い方の検討
-//        sugar = food.sugar ?? 0
+        //        sugar = food.sugar ?? 0
         sugar = carbohydrate - dietaryfiber
     }
 }
 
-//栄養の計算を扱うためのオブジェクト
+// 栄養の計算を扱うためのオブジェクト
 struct PFS { // Protein Fat Sugar
     var protein: Double
     var fat: Double
     var sugar: Double
     
-    //Enerygy関係はほとんど同様のプロパティがPFSとPFCと二箇所にあって良くない
+    // Enerygy関係はほとんど同様のプロパティがPFSとPFCと二箇所にあって良くない
     var energy: Double { // Atwater
         protein * 4 + fat * 9 + sugar * 4
     }
@@ -74,14 +73,14 @@ struct PFS { // Protein Fat Sugar
         return roundedIndex
     }
     
-    //Repositoryからのイニシャライズ
-    init(food: FoodObject){
+    // Repositoryからのイニシャライズ
+    init(food: FoodObject) {
         protein = food.protein
         fat = food.fat
         sugar = food.sugar
     }
     
-    //任意の値でのイニシャライズ
+    // 任意の値でのイニシャライズ
     init(protein: Double, fat: Double, sugar: Double) {
         self.protein = protein
         self.fat = fat
@@ -91,7 +90,9 @@ struct PFS { // Protein Fat Sugar
     // 目標ケトン値に対する必要脂質量の過不足
     func lipidRequirementInKetogenicValue(for targetValue: Double) -> Double? {
         if ((0.1 * targetValue - 0.9) - fat) == 0 { return nil }
-        let lipidRequirement = (0.46 * protein - targetValue * ( sugar + 0.58 * protein )) / (0.1 * targetValue - 0.9) - fat
+        let lipidRequirement =
+        (0.46 * protein - targetValue * ( sugar + 0.58 * protein ))
+        / (0.1 * targetValue - 0.9) - fat
         let roundedLipidRequirement = round(lipidRequirement * 10) / 10
         return roundedLipidRequirement
     }
@@ -134,14 +135,14 @@ struct PFC { // Protein Fat Carbohydrate
         return roundedIndex
     }
     
-    //Repositoryからのイニシャライズ
-    init(food: FoodObject){
+    // Repositoryからのイニシャライズ
+    init(food: FoodObject) {
         protein = food.protein
         fat = food.fat
         carbohydrate = food.carbohydrate
     }
     
-    //任意の値でのイニシャライズ
+    // 任意の値でのイニシャライズ
     init(protein: Double, fat: Double, carbohydrate: Double) {
         self.protein = protein
         self.fat = fat
@@ -159,11 +160,10 @@ struct PFC { // Protein Fat Carbohydrate
     // 目標ケトン指数に対する必要脂質量の過不足
     func lipidRequirementInKetogenicIndex(for targetValue: Double) -> Double? {
         if ((0.1 * targetValue - 0.9) - fat) == 0 { return nil }
-        let lipidRequirement = (0.46 * protein - targetValue * ( carbohydrate + 0.58 * protein)) / ( 0.1 * targetValue - 0.9) - fat
+        let lipidRequirement =
+        (0.46 * protein - targetValue * ( carbohydrate + 0.58 * protein))
+        / ( 0.1 * targetValue - 0.9) - fat
         let roundedLipidRequirement = round(lipidRequirement * 10) / 10
         return roundedLipidRequirement
-        
     }
 }
-
-

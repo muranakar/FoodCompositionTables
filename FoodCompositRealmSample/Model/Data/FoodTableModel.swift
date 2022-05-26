@@ -7,11 +7,9 @@
 
 import Foundation
 import RealmSwift
-//TODO: データの元となっているRealmファイルが新しく作り直せないでいるため、Realmから取ってくるオブジェクトの名称を変えたくても今は変えられていません
-
-//Entity
+// TODO: データの元となっているRealmファイルが新しく作り直せないでいるため、Realmから取ってくるオブジェクトの名称を変えたくても今は変えられていません
+// Entity
 class FoodComposition: Object {
-    
     @Persisted var id: Int?
     @Persisted var food_code: Int?
     @Persisted var food_name: String?
@@ -22,10 +20,8 @@ class FoodComposition: Object {
     @Persisted var dietaryfiber: Double?
     @Persisted var carbohydrate: Double?
     @Persisted var category: String?
-    
 }
-
-//Entity
+// Entity
 class SelectFood: Object {
     // 管理用 ID。プライマリーキー
     @Persisted var objectId = ObjectId.generate()
@@ -33,7 +29,6 @@ class SelectFood: Object {
     @Persisted var foodObject: FoodComposition?
     // 日時
     @Persisted var foodWeight: Double = 100
-    
     override class func primaryKey() -> String? {
         "objectId"
     }
