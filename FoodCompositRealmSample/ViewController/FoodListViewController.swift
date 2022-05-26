@@ -48,16 +48,45 @@ class FoodListViewController: UIViewController, FoodRegistrationDelegate {
                 for: .touchUpInside)
         foodListForTableView = convertAllFoodObjectToArray()
         tableView.reloadData()
+        configureSearchBarTextFieldSetting()
+        configureIndicatorSetting()
+    }
 
-
+    // 参考：https://cpoint-lab.co.jp/article/201911/12587/
+    func configureIndicatorSetting() {
         // 表示位置を設定（画面中央）
         indicator.center = view.center
         // インジケーターのスタイルを指定（白色＆大きいサイズ）
-        indicator.style = .whiteLarge
+        indicator.style = .large
         // インジケーターの色を設定（青色）
         indicator.color = UIColor(named: "Color")
         // インジケーターを View に追加
         view.addSubview(indicator)
+    }
+
+    // 参考：https://www.letitride.jp/entry/2019/08/19/155333
+    func configureSearchBarTextFieldSetting() {
+        // ツールバー生成 サイズはsizeToFitメソッドで自動で調整される。
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+
+        //サイズの自動調整。敢えて手動で実装したい場合はCGRectに記述してsizeToFitは呼び出さない。
+        toolBar.sizeToFit()
+
+        // 左側のBarButtonItemはflexibleSpace。これがないと右に寄らない。
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+        // Doneボタン
+        //        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.close, target: self, action: #selector(commitButtonTapped))
+        // 日本語名に変更。
+        let commitButton = UIBarButtonItem(title: "閉じる", style: .plain, target: self, action: #selector(commitButtonTapped))
+        // BarButtonItemの配置
+        toolBar.items = [spacer, commitButton]
+        // textViewのキーボードにツールバーを設定
+        foodSearchBar.searchTextField.inputAccessoryView = toolBar
+    }
+
+    // TextFieldのツールバーの閉じるボタンが押されたときの処理。
+    @objc func commitButtonTapped() {
+        view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -172,14 +201,17 @@ extension FoodListViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension FoodListViewController: UISearchBarDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-                view.endEditing(true)
-                searchBar.searchTextField.endEditing(true)
+        searchBar.searchTextField.endEditing(true)
     }
 
-    // 書き方悪いと思いますが、UI部分が止まらないように、実装してみました。
+    // 書き方が良くないと思いますが、UI部分が止まらないように、実装してみました。
     // Rxで実装可能だとおもいますが、Rxを用いずに実装する練習のため、実装してみました。
-    // Rxでいうと、debounceTimeの実装に近いです。 参考記事：https://blog.tarkalabs.com/all-about-debounce-4-ways-to-achieve-debounce-in-swift-e8f8ce22f544
+    // Rxでいうと、debounceTimeの実装に近いですかね。
+    // 参考記事：https://blog.tarkalabs.com/all-about-debounce-4-ways-to-achieve-debounce-in-swift-e8f8ce22f544
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // インジケーターを表示＆アニメーション開始
@@ -202,8 +234,6 @@ extension FoodListViewController: UISearchBarDelegate {
                     }
                 }
             } else {
-                // TODO: 入力数値に検索結果が見つからない場合に、「見つかりませんでした」の表示実装してみてもよいかも。
-                // TODO: 読込中のラベルOrインジケーター表示もありかも。
                 // 読込はメインスレッドを用いない
                 dispatchQueue.async {[weak self] in
                     self?.foodListForTableView = (self?.convertSerchedFoodObjectToArray(for: searchText))!
