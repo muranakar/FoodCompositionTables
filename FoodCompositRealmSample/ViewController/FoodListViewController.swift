@@ -172,7 +172,7 @@ extension FoodListViewController: UISearchBarDelegate {
 
     // 書き方悪いと思いますが、UI部分が止まらないように、実装してみました。
     // Rxで実装可能だとおもいますが、Rxを用いずに実装する練習のため、実装してみました。
-    // 参考記事：https://blog.tarkalabs.com/all-about-debounce-4-ways-to-achieve-debounce-in-swift-e8f8ce22f544
+    // Rxでいうと、debounceTimeの実装に近いです。 参考記事：https://blog.tarkalabs.com/all-about-debounce-4-ways-to-achieve-debounce-in-swift-e8f8ce22f544
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let dispatchQueue = DispatchQueue.global()
