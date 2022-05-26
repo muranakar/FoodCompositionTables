@@ -173,13 +173,8 @@ extension FoodListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension FoodListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //        view.endEditing(true)
-        //        guard let searchBarText = searchBar.searchTextField.text else { return }
-        //        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
-        //            self?.foodListForTableView = (self?.convertSerchedFoodObjectToArray(for: searchBarText))!
-        //            self?.tableView.reloadData()
-        //        }
-        //        searchBar.searchTextField.endEditing(true)
+                view.endEditing(true)
+                searchBar.searchTextField.endEditing(true)
     }
 
     // 書き方悪いと思いますが、UI部分が止まらないように、実装してみました。
