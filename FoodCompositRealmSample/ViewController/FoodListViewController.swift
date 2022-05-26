@@ -26,6 +26,8 @@ class FoodListViewController: UIViewController, FoodRegistrationDelegate {
 
     // 検索の際に用いるプロパティ
     var searchTimer: Timer?
+    // インジゲーターの設定
+    var indicator = UIActivityIndicatorView()
     
     // 検索時のTableViewを覆い隠す用
     @IBOutlet private weak var coverView: UIView!
@@ -46,6 +48,16 @@ class FoodListViewController: UIViewController, FoodRegistrationDelegate {
                 for: .touchUpInside)
         foodListForTableView = convertAllFoodObjectToArray()
         tableView.reloadData()
+
+
+        // 表示位置を設定（画面中央）
+        indicator.center = view.center
+        // インジケーターのスタイルを指定（白色＆大きいサイズ）
+        indicator.style = .whiteLarge
+        // インジケーターの色を設定（青色）
+        indicator.color = UIColor(named: "Color")
+        // インジケーターを View に追加
+        view.addSubview(indicator)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -175,6 +187,9 @@ extension FoodListViewController: UISearchBarDelegate {
     // Rxでいうと、debounceTimeの実装に近いです。 参考記事：https://blog.tarkalabs.com/all-about-debounce-4-ways-to-achieve-debounce-in-swift-e8f8ce22f544
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // インジケーターを表示＆アニメーション開始
+        indicator.startAnimating()
+
         let dispatchQueue = DispatchQueue.global()
         // 変数の宣言の部分で、searchTimerを宣言しています。
         searchTimer?.invalidate()
@@ -186,6 +201,8 @@ extension FoodListViewController: UISearchBarDelegate {
                     self?.foodListForTableView = (self?.convertAllFoodObjectToArray())!
                     // テーブルビューの更新はメインスレッドを用いる
                     DispatchQueue.main.async {[weak self] in
+                        // インジケーターを非表示＆アニメーション終了
+                        self?.indicator.stopAnimating()
                         self?.tableView.reloadData()
                     }
                 }
@@ -197,6 +214,8 @@ extension FoodListViewController: UISearchBarDelegate {
                     self?.foodListForTableView = (self?.convertSerchedFoodObjectToArray(for: searchText))!
                     // テーブルビューの更新はメインスレッドを用いる
                     DispatchQueue.main.async {[weak self] in
+                        // インジケーターを非表示＆アニメーション終了
+                        self?.indicator.stopAnimating()
                         self?.tableView.reloadData()
                     }
                 }
